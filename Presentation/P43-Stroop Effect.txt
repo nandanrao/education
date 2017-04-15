@@ -1,0 +1,74 @@
+Block	Trial Number	Task	Condition	Stimulus Text	Stimulus Color	Response	Response Accuracy	RT
+Practice	1	Color Name	Incongruent	GROC	BLAU	4	rm_incorrect	1282.5
+Practice	2	Color Name	Neutral	GROC	Neutral	5	rm_hit	1095
+Practice	3	Color Name	Incongruent	BLAU	VERMELL	4	rm_hit	1205.8
+Practice	4	Color Name	Incongruent	GROC	VERMELL	5	rm_hit	659.8
+Practice	5	Color Name	Neutral	BLAU	Neutral	4	rm_hit	649.7
+Practice	6	Color Name	Neutral	BLAU	Neutral	4	rm_hit	659.8
+Practice	7	Color Name	Neutral	VERMELL	Neutral	2	rm_hit	1238.4
+Practice	8	Color Name	Incongruent	GROC	VERD	5	rm_hit	994.6
+Practice	9	Color Name	Incongruent	VERD	BLAU	3	rm_hit	391.9
+Practice	10	Color Name	Neutral	GROC	Neutral	2	rm_incorrect	709.6
+Practice	11	Color Name	Incongruent	BLAU	VERD	4	rm_hit	641.9
+Practice	12	Color Name	Neutral	VERMELL	Neutral	2	rm_hit	1142.4
+Main	1	Color Name	Incongruent	BLAU	GROC	4	rm_hit	643.4
+Main	2	Color Name	Neutral	VERD	Neutral	3	rm_hit	936.3
+Main	3	Color Name	Incongruent	VERMELL	VERD	2	rm_hit	1146
+Main	4	Color Name	Incongruent	VERMELL	BLAU	2	rm_hit	829.5
+Main	5	Color Name	Incongruent	GROC	BLAU	5	rm_hit	925.8
+Main	6	Color Name	Neutral	GROC	Neutral	5	rm_hit	606
+Main	7	Color Name	Neutral	GROC	Neutral	5	rm_hit	650.3
+Main	8	Color Name	Neutral	VERMELL	Neutral	2	rm_hit	831.8
+Main	9	Color Name	Incongruent	BLAU	VERD	4	rm_hit	719.2
+Main	10	Color Name	Neutral	VERMELL	Neutral	2	rm_hit	959
+Main	11	Color Name	Incongruent	VERD	BLAU	3	rm_hit	1115.8
+Main	12	Color Name	Incongruent	GROC	VERD	5	rm_hit	513.1
+Main	13	Color Name	Neutral	VERMELL	Neutral	2	rm_hit	689.7
+Main	14	Color Name	Incongruent	GROC	VERMELL	5	rm_hit	896.6
+Main	15	Color Name	Neutral	VERD	Neutral	2	rm_incorrect	696.4
+Main	16	Color Name	Neutral	BLAU	Neutral	4	rm_hit	704.8
+Main	17	Color Name	Neutral	VERD	Neutral	3	rm_hit	807.8
+Main	18	Color Name	Incongruent	BLAU	VERMELL	4	rm_hit	700.8
+Main	19	Color Name	Incongruent	VERMELL	GROC	2	rm_hit	982.9
+Main	20	Color Name	Neutral	GROC	Neutral	5	rm_hit	649.9
+Main	21	Color Name	Neutral	BLAU	Neutral	4	rm_hit	991.4
+Main	22	Color Name	Incongruent	VERD	GROC	3	rm_hit	826.9
+Main	23	Color Name	Neutral	BLAU	Neutral	4	rm_hit	782.9
+Main	24	Color Name	Incongruent	VERD	VERMELL	3	rm_hit	822.3
+Practice	1	Ink	Incongruent	BLAU	VERMELL	4	rm_incorrect	1210.6
+Practice	2	Ink	Incongruent	GROC	VERMELL	2	rm_hit	1414.4
+Practice	3	Ink	Neutral	xxx	GROC	5	rm_hit	668.4
+Practice	4	Ink	Neutral	xxxxxx	BLAU	4	rm_hit	829.9
+Practice	5	Ink	Incongruent	BLAU	VERD	3	rm_hit	872.7
+Practice	6	Ink	Incongruent	GROC	BLAU	4	rm_hit	1014.6
+Practice	7	Ink	Incongruent	GROC	VERD	3	rm_hit	1213.8
+Practice	8	Ink	Neutral	xxxxxx	VERMELL	2	rm_hit	726.8
+Practice	9	Ink	Neutral	xxxxx	GROC	5	rm_hit	579.6
+Practice	10	Ink	Neutral	xxx	BLAU	4	rm_hit	908.8
+Practice	11	Ink	Neutral	xxxxx	VERMELL	2	rm_hit	979.2
+Practice	12	Ink	Incongruent	VERD	BLAU	4	rm_hit	869.6
+Main	1	Ink	Neutral	xxxxx	GROC	5	rm_hit	628.6
+Main	2	Ink	Incongruent	BLAU	GROC	4	rm_incorrect	1306.2
+Main	3	Ink	Neutral	xxx	GROC	5	rm_hit	522.5
+Main	4	Ink	Incongruent	VERD	BLAU	4	rm_hit	598.1
+Main	5	Ink	Incongruent	GROC	VERD	3	rm_hit	700.1
+Main	6	Ink	Neutral	xxxx	GROC	5	rm_hit	640.7
+Main	7	Ink	Neutral	xxxx	BLAU	4	rm_hit	657.9
+Main	8	Ink	Neutral	xxx	BLAU	4	rm_hit	499.4
+Main	9	Ink	Neutral	xxxxx	VERMELL	2	rm_hit	722.4
+Main	10	Ink	Incongruent	VERMELL	BLAU	4	rm_hit	694.6
+Main	11	Ink	Incongruent	BLAU	VERMELL	2	rm_hit	1086.6
+Main	12	Ink	Incongruent	GROC	BLAU	4	rm_hit	622.9
+Main	13	Ink	Neutral	xxxxxx	VERMELL	2	rm_hit	905.6
+Main	14	Ink	Neutral	xxxxx	VERD	3	rm_hit	708.2
+Main	15	Ink	Incongruent	GROC	VERMELL	2	rm_hit	941.1
+Main	16	Ink	Neutral	xxx	VERD	3	rm_hit	496
+Main	17	Ink	Incongruent	VERD	VERMELL	2	rm_hit	745.8
+Main	18	Ink	Incongruent	VERMELL	VERD	3	rm_hit	879
+Main	19	Ink	Incongruent	VERMELL	GROC	5	rm_hit	684.7
+Main	20	Ink	Incongruent	VERD	GROC	5	rm_hit	690.3
+Main	21	Ink	Neutral	xxxxxx	BLAU	4	rm_hit	588.7
+Main	22	Ink	Neutral	xxxxxx	VERD	3	rm_hit	871.6
+Main	23	Ink	Incongruent	BLAU	VERD	3	rm_hit	655.8
+Main	24	Ink	Neutral	xxxx	VERMELL	2	rm_hit	810.3
+

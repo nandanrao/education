@@ -1,0 +1,5 @@
+Subject ID	Task	Congruency	Accuracy	Accuracy (SD)	Avg RT	Avg RT (SD)	Median RT	Number of Trials	Date/Time	
+P43	Ink	Neutral	1	0	670.5	138.285	648.5	12	02/09/2017 03:30:51
+P43	Ink	Incongruent	0.917	0.289	799.917	214.715	697	12	02/09/2017 03:30:51
+P43	Color Name	Neutral	0.917	0.289	774.917	131.085	743	12	02/09/2017 03:30:51
+P43	Color Name	Incongruent	1	0	842.917	185.789	827.5	12	02/09/2017 03:30:51

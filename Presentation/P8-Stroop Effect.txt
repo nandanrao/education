@@ -1,0 +1,74 @@
+Block	Trial Number	Task	Condition	Stimulus Text	Stimulus Color	Response	Response Accuracy	RT
+Practice	1	Ink	Neutral	xxxx	BLAU	4	rm_hit	975.8
+Practice	2	Ink	Neutral	xxxxx	VERMELL	2	rm_hit	710.5
+Practice	3	Ink	Incongruent	VERD	BLAU	3	rm_incorrect	493.6
+Practice	4	Ink	Incongruent	GROC	VERMELL	2	rm_hit	737.5
+Practice	5	Ink	Incongruent	GROC	BLAU	4	rm_hit	734.7
+Practice	6	Ink	Incongruent	BLAU	VERMELL	2	rm_hit	639.8
+Practice	7	Ink	Incongruent	BLAU	GROC	5	rm_hit	425.9
+Practice	8	Ink	Incongruent	GROC	VERD	3	rm_hit	317.3
+Practice	9	Ink	Neutral	xxx	BLAU	5	rm_incorrect	654.6
+Practice	10	Ink	Neutral	xxxx	VERMELL	2	rm_hit	554.4
+Practice	11	Ink	Incongruent	VERD	GROC	4	rm_incorrect	515.7
+Practice	12	Ink	Incongruent	BLAU	VERD	3	rm_hit	413.5
+Main	1	Ink	Neutral	xxx	VERD	2	rm_incorrect	592.2
+Main	2	Ink	Incongruent	GROC	VERD	3	rm_hit	766
+Main	3	Ink	Neutral	xxxxx	VERMELL	2	rm_hit	398.6
+Main	4	Ink	Incongruent	VERMELL	BLAU	4	rm_hit	424.4
+Main	5	Ink	Neutral	xxxxxx	VERD	3	rm_hit	414.6
+Main	6	Ink	Neutral	xxxxx	VERD	2	rm_incorrect	427
+Main	7	Ink	Neutral	xxxx	VERMELL	2	rm_hit	662.6
+Main	8	Ink	Incongruent	VERD	VERMELL	2	rm_hit	619.5
+Main	9	Ink	Neutral	xxx	BLAU	3	rm_incorrect	771.9
+Main	10	Ink	Incongruent	GROC	BLAU	4	rm_hit	417
+Main	11	Ink	Incongruent	VERD	BLAU	4	rm_hit	983.5
+Main	12	Ink	Neutral	xxxx	BLAU	4	rm_hit	505
+Main	13	Ink	Incongruent	VERMELL	VERD	2	rm_incorrect	545
+Main	14	Ink	Neutral	xxxxxx	VERMELL	2	rm_hit	583.1
+Main	15	Ink	Neutral	xxxxx	GROC	5	rm_hit	423
+Main	16	Ink	Incongruent	VERMELL	GROC	5	rm_hit	620.7
+Main	17	Ink	Incongruent	BLAU	VERD	2	rm_incorrect	597.2
+Main	18	Ink	Incongruent	VERD	GROC	5	rm_hit	1054.8
+Main	19	Ink	Incongruent	BLAU	VERMELL	2	rm_hit	628.2
+Main	20	Ink	Incongruent	BLAU	GROC	5	rm_hit	541.6
+Main	21	Ink	Neutral	xxx	GROC	5	rm_hit	456.3
+Main	22	Ink	Neutral	xxxxxx	BLAU	4	rm_hit	359.2
+Main	23	Ink	Neutral	xxxx	GROC	5	rm_hit	651.7
+Main	24	Ink	Incongruent	GROC	VERMELL	2	rm_hit	479.6
+Practice	1	Color Name	Incongruent	BLAU	GROC	5	rm_incorrect	1005.2
+Practice	2	Color Name	Incongruent	GROC	VERD	3	rm_incorrect	883.1
+Practice	3	Color Name	Neutral	BLAU	Neutral	4	rm_hit	1745.1
+Practice	4	Color Name	Incongruent	BLAU	VERMELL	2	rm_incorrect	908.2
+Practice	5	Color Name	Incongruent	VERD	GROC	3	rm_hit	1772.5
+Practice	6	Color Name	Incongruent	BLAU	VERD	4	rm_hit	1299.4
+Practice	7	Color Name	Incongruent	GROC	BLAU	4	rm_incorrect	760.9
+Practice	8	Color Name	Neutral	VERMELL	Neutral	2	rm_hit	1952.8
+Practice	9	Color Name	Incongruent	VERD	BLAU	3	rm_hit	1850.8
+Practice	10	Color Name	Neutral	VERD	Neutral	3	rm_hit	691.7
+Practice	11	Color Name	Incongruent	GROC	VERMELL	5	rm_hit	963.5
+Practice	12	Color Name	Neutral	VERD	Neutral	3	rm_hit	1603.5
+Main	1	Color Name	Neutral	VERMELL	Neutral	2	rm_hit	1252.2
+Main	2	Color Name	Incongruent	BLAU	VERD	4	rm_hit	1213.5
+Main	3	Color Name	Incongruent	VERMELL	BLAU	2	rm_hit	727
+Main	4	Color Name	Neutral	VERD	Neutral	3	rm_hit	636.9
+Main	5	Color Name	Neutral	VERMELL	Neutral	3	rm_incorrect	427.6
+Main	6	Color Name	Neutral	BLAU	Neutral	4	rm_hit	1034.4
+Main	7	Color Name	Incongruent	BLAU	GROC	4	rm_hit	740
+Main	8	Color Name	Incongruent	VERMELL	GROC	2	rm_hit	876.1
+Main	9	Color Name	Neutral	VERD	Neutral	3	rm_hit	857.7
+Main	10	Color Name	Incongruent	BLAU	VERMELL	4	rm_hit	858.2
+Main	11	Color Name	Neutral	VERMELL	Neutral	2	rm_hit	663.9
+Main	12	Color Name	Incongruent	VERD	BLAU	3	rm_hit	591.3
+Main	13	Color Name	Neutral	VERD	Neutral	3	rm_hit	685.9
+Main	14	Color Name	Incongruent	VERD	VERMELL	3	rm_hit	651.5
+Main	15	Color Name	Incongruent	VERD	GROC	3	rm_hit	584.6
+Main	16	Color Name	Incongruent	GROC	BLAU	5	rm_hit	620.1
+Main	17	Color Name	Neutral	BLAU	Neutral	3	rm_incorrect	780.9
+Main	18	Color Name	Neutral	GROC	Neutral	5	rm_hit	644.7
+Main	19	Color Name	Neutral	BLAU	Neutral	4	rm_hit	744.5
+Main	20	Color Name	Incongruent	GROC	VERMELL	5	rm_hit	567.5
+Main	21	Color Name	Incongruent	GROC	VERD	5	rm_hit	606.9
+Main	22	Color Name	Incongruent	VERMELL	VERD	2	rm_hit	784.7
+Main	23	Color Name	Neutral	GROC	Neutral	5	rm_hit	698.6
+Main	24	Color Name	Neutral	GROC	Neutral	5	rm_hit	654.1
+
