@@ -8,10 +8,11 @@ from fnmatch import fnmatch
 
 def load_eeg(subject, directory = "EEG"):
     """ Load EEG data, filter 1-50Hz, drops useless channels """
-    dat = mne.io.read_raw_brainvision(get_file(directory, subject+"*.vhdr"))
+    dat = mne.io.read_raw_brainvision(get_file(directory, subject+"*.vhdr"), scale= 0.01)
     dat.load_data()
     dat.drop_channels(["x_dir", "y_dir", "z_dir", "STI 014"])
     dat.filter(1, 50)
+    dat, _ = mne.set_eeg_reference(dat, [])
     return dat
 
 def get_file(directory, pat):
@@ -43,9 +44,11 @@ def read_raw(subject):
       "stroop-summary": read_pres_file(subject, "*Stroop Effect-Summary-*.txt", 0)
     }
 
-def adjust_timing(df, base_time):
+def adjust_timing(df, base_time, eeg_start):
+    # add eeg_start!!
     # I think the base_time is in ms, not 1/10ths ms.
-    adjusted_time =  df["Time"].add(int(base_time * 10))
+    adj = int((base_time - eeg_start) * 10)
+    adjusted_time =  df["Time"].add(adj)
     sample_num = adjusted_time / 20
     return df.assign(Time_Total = adjusted_time, sample_num = sample_num)
 
@@ -57,40 +60,37 @@ def with_timing(subject, timing):
     for a in to_adjust:
         df = logs[a[0]]
         df["Time"] = pd.to_numeric(df["Time"])
-        logs[a[0]] = adjust_timing(df, time[a[1]].values[0])
+        logs[a[0]] = adjust_timing(df, time[a[1]].values[0], time["EEG Start"].values[0])
     return logs
 
+# two-back and three-back --> letter not important, picture_not_target, picture target, response
+def encode_back_test(df):
+    mapping = {"yes": 1, "no":2, np.nan: 3}
+    return df["is_target(str)"].map(lambda x: mapping[x])
 
+def make_event_df(df):
+    return pd.DataFrame({"a": df.sample_num,
+                         "b": np.zeros(len(df)),
+                         "event_id": encode_back_test(df)})
 
-# montage = mne.channels.read_montage('biosemi32')
-# dat.set_montage(montage)
+def make_all_events(raw):
+    targets = ["two-back", "three-back"]
+    concat = lambda a,b: pd.concat([a,b])
+    df = reduce(concat, map(lambda k: make_event_df(raw[k]), targets))
+    return df.as_matrix().astype("int")
 
 timing = pd.read_csv("eeg_tests/timing.csv")
+
 p25 = with_timing("P25", timing)
 p25_dat = load_eeg("P25")
+events = make_all_events(p25)
 
-# convert the events from the actual two-back frame into num-coded events!
-# concat with three-back, etc.
-events = pd.DataFrame({"a": p25["two-back"].sample_num, "b": np.zeros(len(p25["two-back"])), "event_id": np.ones(len(p25["two-back"]))}).as_matrix().astype("int")
-
+# montage = mne.channels.read_montage('easycap-M10')
+# p25_dat.set_montage(montage)
 # mne.Epochs(p25_dat, events, {"two-back": 1}, -0.5)
 
-p25_dat.plot(events = events)
+p25_dat.plot(events = events, event_color = {1: "green", 2: "blue", 3: "red"})
 plt.show()
 
 
-
-# sometimes the 2-back and 3-back come at exactly the same time, sometimes slightly off
-
-# what is stroop1full stroop1 practise etc., in the Stroop log and txt files I only have Main/Practise
-
-# only P24 has 2-Stroop in the filename -- is this something different?
-# what does "next" mean in the Time column??
-
-# I assume that the "timing" excel sheet from Video is in milliseconds, not 1/10 milliseconds?
-
 # in all the log files, there's something weird where they start repeating some of the columns at the bottom of the file??
-
-# Why does "subject" in stroop log suddenly turn from "P13" to "Picture"
-
-# take times from video timing (excel), add the times from
