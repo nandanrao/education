@@ -45,10 +45,8 @@ def read_raw(subject):
     }
 
 def adjust_timing(df, base_time, eeg_start):
-    # add eeg_start!!
     # I think the base_time is in ms, not 1/10ths ms.
-    adj = int((base_time - eeg_start) * 10)
-    adjusted_time =  df["Time"].add(adj)
+    adjusted_time =  df["Time"] + int((base_time - eeg_start) * 10)
     sample_num = adjusted_time / 20
     return df.assign(Time_Total = adjusted_time, sample_num = sample_num)
 
@@ -91,6 +89,3 @@ events = make_all_events(p25)
 
 p25_dat.plot(events = events, event_color = {1: "green", 2: "blue", 3: "red"})
 plt.show()
-
-
-# in all the log files, there's something weird where they start repeating some of the columns at the bottom of the file??
