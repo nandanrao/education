@@ -44,8 +44,10 @@ def read_raw(subject):
       "stroop-summary": read_pres_file(subject, "*Stroop Effect-Summary-*.txt", 0)
     }
 
+
 def adjust_timing(df, base_time, eeg_start):
-    # I think the base_time is in ms, not 1/10ths ms.
+    # adjust for whatever takes this excel timing sheet into 1/10ths of ms
+    # is this 10000/59.94??? no...
     adjusted_time =  df["Time"] + int((base_time - eeg_start) * 10)
     sample_num = adjusted_time / 20
     return df.assign(Time_Total = adjusted_time, sample_num = sample_num)
