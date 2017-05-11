@@ -21,37 +21,9 @@ def network_group(g, directed = True, folder = 'educatalyst/Data/Raw/1612_jesuit
 def get_out_of_sample_nodes(g):
     nodes = set([e[0] for e in g.edges()])
     in_nodes = set([e[1] for e in g.edges()])
-    print len(in_nodes), len(nodes)
     return in_nodes.difference(nodes)
 
 
 def get_girvan(g, n):
     girv = nx.girvan_newman(g)
     return list(islice(girv, 0, n))[n - 1]
-
-
-c = network_group('c')
-ij = network_group('ij')
-
-
-# these look alright visually!!
-get_girvan(c, 1)
-get_girvan(ij, 6)
-
-# create community ID's, assign to each kid...?
-# add centrality for each kid???
-nx.in_degree_centrality(c)
-
-# closeness centrality doesn't have much variance...
-nx.closeness_centrality(c)
-
-
-# they clearly didn't just pick the kids in the class that was being tested...
-# but ij only has 11,
-len(get_out_of_sample_nodes(c))
-len(get_out_of_sample_nodes(ij))
-
-
-nx.draw(ij, with_labels = True)
-nx.draw(c, with_labels = True)
-plt.show()

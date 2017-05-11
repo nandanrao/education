@@ -6,6 +6,7 @@ import mne.io
 from os import path, listdir
 from fnmatch import fnmatch
 
+
 def load_eeg(subject, directory = "EEG"):
     """ Load EEG data, filter 1-50Hz, drops useless channels """
     dat = mne.io.read_raw_brainvision(get_file(directory, subject+"*.vhdr"), scale= 0.01)
@@ -48,7 +49,7 @@ def read_raw(subject):
 def adjust_timing(df, base_time, eeg_start):
     # adjust for whatever takes this excel timing sheet into 1/10ths of ms
     # is this 10000/59.94??? no...
-    adjusted_time =  df["Time"] + int((base_time - eeg_start) * 10)
+    adjusted_time =  df["Time"] + int((base_time - eeg_start) * 20)
     sample_num = adjusted_time / 20
     return df.assign(Time_Total = adjusted_time, sample_num = sample_num)
 
