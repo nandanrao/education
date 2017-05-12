@@ -45,5 +45,5 @@ def big_five_projection(df):
     bigfive = pd.read_csv("educatalyst/Auxil/q1_key_bigfive.csv")
     codes = bigfive.bigfive_code
     df = df.filter(regex='^1')
-    sums = [df.as_matrix().dot((codes == i).astype(int)) for i in codes.unique()]
-    return np.matrix(sums).T
+    comps = np.matrix([(codes == i).astype(int) for i in codes.unique()])
+    return df.as_matrix().dot(comps.T)
