@@ -35,10 +35,12 @@ def read_surveys():
 def prep_X(df):
     df = df.drop(['group', 'user_id'], 1)
 
+    on_seven_scale = list(df.filter(regex = '^3').columns)
+    df[on_seven_scale] = df[on_seven_scale] * 5/7
     # Most are on a scale of 1-5, but the 300 questions are scaled
     # 1-7, so we just remove an extra 1 to center them.
     df -= 3
-    df[list(df.filter(regex = '^3').columns)] -= 1
+
     return df
 
 def big_five_projection(df):
