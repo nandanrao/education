@@ -5,9 +5,16 @@ import matplotlib.pyplot as plt
 import re
 from os import path
 from sklearn.decomposition import SparsePCA
-from sklearn.preprocessing import scale
+from sklearn.preprocessing import scale, normalize
 from sklearn.metrics.pairwise import pairwise_distances
 from sklearn.linear_model import Lasso, ElasticNet
+from scipy import stats
+from bokeh.charts import Scatter
+
+# do we still want this??
+def viz_students(m, selected):
+    d = pd.DataFrame(m, columns = ['one', 'two']).assign(user_id = ids, selected = selected)
+    d.plot.scatter(x = 'one', y = 'two', c = 'selected')
 
 def get_question_num(s, q):
     try:
@@ -46,43 +53,43 @@ def prep_X(df):
 
 def get_big_five_comps(bigfive):
     codes = bigfive.bigfive_code
-    return np.matrix([(codes == i).astype(int) for i in codes.unique()]).T
+    comps = np.matrix([(codes == i).astype(int) for i in codes.unique()]).T
+    return normalize(comps, axis = 0)
 
-def big_five_projection(df):
-    bigfive = pd.read_csv("educatalyst/Auxil/q1_key_bigfive.csv")
-    df = df.filter(regex='^1')
+def big_five_projection(bigfive, df, scaled = False):
+    df = df if not scaled else df.apply(scale)
     comps = get_big_five_comps(bigfive)
-    return df.as_matrix().dot(comps)
+    mat = df.as_matrix().dot(comps)
+    bigfive_types = bigfive.bigfive_lbl_eng.unique()
+    return pd.DataFrame(mat, columns = bigfive_types)
 
-class MultiLasso(Lasso):
-    def __init__(self, alpha=1.0, **kwargs):
-        # self.kwargs = kwargs
-        # self.kwargs['alpha'] = alpha
-        self.alpha = alpha
+get_diff = lambda a,b: np.linalg.norm(a - b)/np.linalg.norm(a)
 
-    def fit(self, X, Y):
-        cols = Y.shape[1]
-        r = range(cols)
-        # print self.kwargs
-        self.models = [Lasso(alpha = self.alpha).fit(X, Y[:,i]) for i in r]
-        self.coef_ = [m.coef_ for m in self.models]
-        self.original_var = [(np.asarray(Y[:,i] - Y[:,i].mean()) ** 2).sum() for i in r]
+def test_distance_measure(metric, X = None, scaled = True):
+    X = X if X is not None else (np.random.beta(1,10, 100) * 100).reshape(-1,1)
+    a,b = (scale(X), scale(np.log(X))) if scaled else (X, np.log(X))
+    d1 = pairwise_distances(a, metric = metric)
+    d2 = pairwise_distances(b, metric = metric)
+    return get_diff(d1, d2), get_diff(d2, d1)
+
+distances = ['minkowski', 'seuclidean', 'sqeuclidean', 'euclidean', 'cosine', 'cityblock', 'chebyshev', 'canberra', 'braycurtis', 'mahalanobis']
 
 
-    def predict(self, X):
-        if not self.models:
-            raise Exception('bogus! No models???')
-        return np.matrix([m.predict(X) for m in self.models]).T
+######################################################
+# KENDALL TAU
+def compare_order(m1, m2):
+    cols = m1.shape[1]
+    axes = [(m1[:,i], m2[:,i]) for i in range(cols)]
+    return [stats.kendalltau(a,b) for a,b in axes]
 
-    def scores(self, X, Y):
-        if not self.models:
-            raise Exception('bogus! No models???')
-        r = range(Y.shape[1])
-        return [self.models[i].score(X, Y[:,i]) for i in r]
+def compare_factors(df1, comps1, df2, comps2):
+    m1 = df1.dot(comps1).as_matrix()
+    m2 = df2.dot(comps2).as_matrix()
+    return compare_order(m1, m2)
 
-    def score(self, X, Y):
-        return np.mean(self.scores(X, Y))
 
+######################################################
+# Our regression classes
 class MultiElasticNet(ElasticNet):
     def __init__(self, alpha=1.0, l1_ratio = 0.5, **kwargs):
         self.alpha = alpha
@@ -110,3 +117,9 @@ class MultiElasticNet(ElasticNet):
 
     def score(self, X, Y):
         return np.mean(self.scores(X, Y))
+
+class MultiLasso(MultiElasticNet):
+    def __init__(self, alpha=1.0, **kwargs):
+        self.alpha = alpha
+        self.l1_ratio = 1.0
+        super(MultiLasso, self)
