@@ -65,6 +65,10 @@ def big_five_projection(bigfive, df, scaled = False):
 
 get_diff = lambda a,b: np.linalg.norm(a - b)/np.linalg.norm(a)
 
+def compare_distance(d1, d2):
+    a,b = [pairwise_distances(x, metric='mahalanobis') for x in [d1,d2]]
+    return get_diff(a,b)
+
 def test_distance_measure(metric, X = None, scaled = True):
     X = X if X is not None else (np.random.beta(1,10, 100) * 100).reshape(-1,1)
     a,b = (scale(X), scale(np.log(X))) if scaled else (X, np.log(X))
@@ -73,6 +77,15 @@ def test_distance_measure(metric, X = None, scaled = True):
     return get_diff(d1, d2), get_diff(d2, d1)
 
 distances = ['minkowski', 'seuclidean', 'sqeuclidean', 'euclidean', 'cosine', 'cityblock', 'chebyshev', 'canberra', 'braycurtis', 'mahalanobis']
+
+
+def get_questions(comps, thresh = 0.01):
+    comps = comps.T.tolist()
+    a = pd.read_csv("educatalyst/Auxil/q3_key_teique.csv")
+    b = pd.read_csv("educatalyst/Auxil/q4_key_grit.csv")
+    questions = pd.concat([a,b], ignore_index=True).q_lbl_eng.tolist()
+    return [pd.DataFrame([[n,q] for (n,q) in zip(c, questions) if abs(n) > thresh])
+            for c in comps]
 
 
 ######################################################
