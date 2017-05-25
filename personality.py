@@ -56,8 +56,7 @@ def get_big_five_comps(bigfive):
     comps = np.matrix([(codes == i).astype(int) for i in codes.unique()]).T
     return normalize(comps, axis = 0)
 
-def big_five_projection(bigfive, df, scaled = False):
-    df = df if not scaled else df.apply(scale)
+def big_five_projection(bigfive, df):
     comps = get_big_five_comps(bigfive)
     mat = df.as_matrix().dot(comps)
     bigfive_types = bigfive.bigfive_lbl_eng.unique()
