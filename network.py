@@ -17,7 +17,6 @@ def network_group(g, directed = True, folder = 'educatalyst/Data/Raw/1612_jesuit
     G.add_edges_from(edges)
     return G
 
-
 def get_out_of_sample_nodes(g):
     nodes = set([e[0] for e in g.edges()])
     in_nodes = set([e[1] for e in g.edges()])
