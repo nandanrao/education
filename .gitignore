@@ -1,4 +1,7 @@
 EEG/
+.DS_Store
+.Rhistory
+.ipython/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
