@@ -33,7 +33,11 @@
     "F"
     "Load"
     "B")
+   (LaTeX-add-labels
+    "fig:grid-bf")
    (LaTeX-add-environments
+    '("proof" LaTeX-env-args ["argument"] 0)
+    '("prop" LaTeX-env-args ["argument"] 0)
     "theorem"
     "proposition"
     "lemma")

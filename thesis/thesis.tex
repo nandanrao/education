@@ -10,7 +10,7 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}{Proposition}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
-\DeclareMathOperator*{\argmin}{argmin}p
+\DeclareMathOperator*{\argmin}{argmin}
 
 \newcommand{\diagmat}[1]{\left[%
 \begin{array}{@{}c@{}c@{}c@{}}
@@ -124,7 +124,7 @@ This rotational ability is core to factor analysis, and will be core to our exam
 \B{\hat{F}TT'L\Psi^{-1}LTT'} &= \B{X\Psi^{-1}LTT'} \\
 \B{\hat{F}L\Psi^{-1}L} &= \B{X\Psi^{-1}L}
 \end{align*}
-
+%
 Where $\B{TT'} = \B{T'T} = \B{I}$ for any orthogonal rotation matrix.
 
 \subsection{Simple Structure and Varimax}
@@ -161,6 +161,22 @@ As discussed previously, PCA will differ from a maximum likelihood solution when
 It can be clearly seen in the explained variance tables that the overall percentage of explained variance does not change with rotation, but that through varimax rotation the dispersion of variance is more equal, in line with the Big Five traits. This aligns with the previously stated theory, we are rotating the coordinate axes, but the subspace maintains the same, the rotation is done for our own purposes, in the traditional varimax case that purpose is to increase interpretability.
 
 We hijack this process for our own purpose here, and explore several methods of rotating the coordinate axes such that we align the factors more closely with the big five, to see how well these factors might actually correlate with those of the Big Five, given the correct rotation.
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/grid_bf.png}
+\begin{tabular}{lrrrrr}
+\toprule
+{} &         0 &         1 &         2 &         3 &         4 \\
+\midrule
+Varimax Oblique    &  0.968546 &  0.943092 &  0.922326 &  0.973424 &  0.942151 \\
+Varimax Orthogonal &  0.748137 &  0.557080 &  0.369989 &  0.938690 &  0.932587 \\
+L2 Orthogonal      &  0.881740 &  0.781647 &  0.747987 &  0.952970 &  0.802980 \\
+Identity           &  0.331887 &  0.291065 &  0.359494 &  0.332125 &  0.195156 \\
+\bottomrule
+\end{tabular}
+\caption{Different Rotations of Factors of Big Five Survey}\label{fig:grid-bf}
+\end{figure}
+
 
 
 It is worth noting two interesting facts here that address directly the concern of Norman we recounted in the history section, namely: ``is there a large general factor, relating to general social desirability, present anywhere in these results.''
