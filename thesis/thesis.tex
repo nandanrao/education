@@ -35,7 +35,8 @@
 \maketitle
 
 \begin{abstract}
-  We use techniques taken from, and some further inspired by, original research in personality traits to examine the personality survey data from 94 students in 2 classes in 2 schools in Barcelona. We find that the Big Five personality traits are definitively...
+  We use techniques taken from, and some further inspired by, original research in personality traits to examine the personality survey data from 94 students in 2 classes in 2 schools in Barcelona. We confirm the relevance of the Big Five personality traits by finding them mappable to the five most prominent common factors in one group of surveys, and mappable to at least a couple primary common factors in a second group of surveys. Finally, we lay out an agenda, goals, and assumptions for the specification of a prediction model that can find these factors within a variety of measurement types.
+
 \end{abstract}
 
 \section{Background}
@@ -244,17 +245,17 @@ It can be clearly seen in the explained variance tables that the overall percent
 
 We hijack this process for our own purpose here, and explore several methods of rotating the coordinate axes such that we align the factors more closely with the big five, to see how well these factors might actually correlate with those of the Big Five, given the correct rotation.
 
-To begin with we utilize a simple gradient projection algorithm, first introduced by Jennrich and summarized in \ref{2005gradient}, which is an optimization routine that allows us to rotate, both orthogonally and obliquely, by a given objective function for which gradients will be estimated numerically. We optimize three versions of this algorithm and plot correlation graphs between the rotated factors and the Big Five traits, one being the simple L2 norm difference between the matrices, the other being an oblique and orthogonal rotation of an objective function we create, which is simply the varimax of the correlation between the factors and the Big Five traits.
+To begin with we utilize a simple gradient projection algorithm, first introduced by Jennrich and summarized in \cite{2005gradient}, which is an optimization routine that allows us to rotate, both orthogonally and obliquely, by a given objective function for which gradients will be estimated numerically. We optimize three versions of this algorithm and plot correlation graphs between the rotated factors and the Big Five traits, one being the simple L2 norm difference between the matrices, the other being an oblique and orthogonal rotation of an objective function we create, which is simply the varimax of the correlation between the factors and the Big Five traits.
 
 In this way we are taking this idea of simple structure and using it as a criterion for measuring how well our latent factors match the Big Five traits. Results of the correlation coefficients are plotted in figures \ref{fig:grid-bf} and \ref{fig:grid-others} and the maximum correlation with a Big Five factor is included for each factor. Note, that the factors are indexed 0-4, and the Big Five traits are indexed 5-10.
 
 We take note of facts regarding the Big Five surveys and the Others survey:
 
 \paragraph{Big Five Surveys}
-While both the orthogonal L2 rotation and the orthogonal varimax rotation of the factors in the big five survey generate relatively high correlation coefficients with some of the Big Five traits, the oblique varimax iteration delivers scores that are extremely high, between 92-98\%. The success of all of the rotations leads us to a strong conclusion that these are the same latent factors, a major conclusion.
+While both the orthogonal L2 rotation and the orthogonal varimax rotation of the factors in the big five survey generate relatively high correlation coefficients with some of the Big Five traits, the orthogonal L2 minimization delivers extremely high coefficients, all of with are over 70\%, and the varimax maximization delivers a simple structure that loads three factors with over 74\%. Relaxing the orthogonal assumption naturally allows us to go all the way in correlated with the non-orthogonal Big Five traits, achieving a correlation matrix that is close to identical. The success all of the rotations leads us to a strong conclusion that these are the same latent factors, a major conclusion.
 
 \paragraph{Others Survey}
-Rotation of the factors in the Others survey, on the other hand, is decidedly less easy to interpret. The L2 approximation gives only three factors correlated more than 50\%, and the varimax, which has a simpler structure, only has one.
+Rotation of the factors in the Others survey, on the other hand, is decidedly less easy to interpret. The L2 approximation gives only three factors correlated more than 50\%, and the varimax, even restricting the orthogonality, achieves a simpler structure but with only one factor above 50\%.
 \\
 \\
 The natural next step, now that we're correlating latent factors, is to enter the world of Canonical Correspondence Analysis and Partial Least Square analysis, which attempts to do exactly that explicitly. There is a traditional algorithm, a few other versions, but for our purposes we explain the one that provides the best results in this circumstance, and happens to be so simple it can be accurately described in a catchphrase: PCA For Cross-Covariance Matrices. This is sometimes referred to as PLS-SVD, and it's brutally simply: we extract the SVD decomposition of the cross covariance matrix, and use the U and V as our loadings.
@@ -335,19 +336,17 @@ Linear Regression &  0.800271 &  0.803592 &  0.840472 &  0.599498 &  0.825383 \\
 \caption{Correlation of Factors Found by Linear Regression}\label{fig:regression}
 \end{figure}
 
-\section{Conclusion}
+\section{Conclusions}
 
 We have unearthed the original techniques, theories, and concerns of the original authors of the Big Five personality traits and determined resoundingly that, indeed, these traits are present and measurable in the population and data-collection methods we are using in our work. Specifically, we found that each of the five major factors self-evident in the data of the Big Five survey are extremely correlated with each of the Big Five personality traits.
 
-The results for the Other surveys are quite mixed, where at most three or possibly four of the driving factors from that space can be identified to Big Five traits.
+The results for the Other surveys are quite mixed, where at most three or possibly four of the driving factors from that space can be identified to Big Five traits, although the results are hardly conclusive, nor is the methodology explored considered in any way sufficient to determine that, which is also an important fact for future work.
 
 We raised a serious concern about the existence of a single general factor, which combined with the asymmetric answers to some of the survey questions could indicate that the surveys themselves are misaligned with the population. This was a confounding factor in our ability to determine the Big Five traits, and while it was not in the end insurmountable, it is definite cause for concern and caution in future efforts.
 
 This was the primary purpose of this thesis, however, as is so often the case, we have opened more questions than we have closed and much work is still to be done.
 
-The clearest work that lays ahead is to begin the process of building a predictive model that incorporates all of the assumptions laid out in the Regression section. All of our assumptions beg us to consider the world of Bayesian Non-Parametric modeling, which give us both formal Bayesian formulations of prior belief, flexibility with regards to distributions of errors and linearlity of relationships, as well as the ability to avoid setting the number of parameters, in our case latent factors to be learned, a prior. There has been relatively little work in this relatively recent field, with notable exceptions being \cite{}.
-
-
+The clearest work that lays ahead is to begin the process of building a predictive model that incorporates all of the assumptions laid out in the Regression section. All of our assumptions beg us to consider the world of Bayesian Non-Parametric modeling, which give us both formal Bayesian formulations of prior belief, flexibility with regards to distributions of errors and linearlity of relationships, as well as the ability to avoid setting the number of parameters, in our case latent factors to be learned, a prior.
 
 \printbibliography
 \end{document}

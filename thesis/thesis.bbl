@@ -19,6 +19,39 @@
 
 \refsection{0}
   \sortlist[entry]{nty/global/}
+    \entry{2005gradient}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=f245f55b771962bfae72d710c076b1f9}{%
+           family={Bernaards},
+           familyi={B\bibinitperiod},
+           given={Coen\bibnamedelima A},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{uniquename=0,hash=9f695c31d584d01fc82abe1856ba9f0a}{%
+           family={Jennrich},
+           familyi={J\bibinitperiod},
+           given={Robert\bibnamedelima I},
+           giveni={R\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Sage Publications Sage CA: Thousand Oaks, CA}%
+      }
+      \strng{namehash}{24a562d731bcecb0932aea4fb3a73670}
+      \strng{fullhash}{24a562d731bcecb0932aea4fb3a73670}
+      \strng{authornamehash}{24a562d731bcecb0932aea4fb3a73670}
+      \strng{authorfullhash}{24a562d731bcecb0932aea4fb3a73670}
+      \field{sortinit}{B}
+      \field{sortinithash}{5f6fa000f686ee5b41be67ba6ff7962d}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Educational and Psychological Measurement}
+      \field{number}{5}
+      \field{title}{Gradient projection algorithms and software for arbitrary rotation criteria in factor analysis}
+      \field{volume}{65}
+      \field{year}{2005}
+      \field{pages}{676\bibrangedash 696}
+      \range{pages}{21}
+    \endentry
     \entry{john1999}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,hash=4f4190f98a8ac9333ba48ae07549238c}{%
@@ -51,6 +84,44 @@
       \field{year}{1999}
       \field{pages}{102\bibrangedash 138}
       \range{pages}{37}
+    \endentry
+    \entry{kaiser1971}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=edf14f9816c910ae47e806c7615d36eb}{%
+           family={Kaiser},
+           familyi={K\bibinitperiod},
+           given={Henry},
+           giveni={H\bibinitperiod}}}%
+        {{uniquename=0,hash=1a5e9a49071a0d6029eec22c41760bae}{%
+           family={Hunka},
+           familyi={H\bibinitperiod},
+           given={Steve},
+           giveni={S\bibinitperiod}}}%
+        {{uniquename=0,hash=6fc87330c34e75c901e5bf9316e08b02}{%
+           family={Bianchini},
+           familyi={B\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{31fbba1e850f6b30d91acc45d68ef995}
+      \strng{fullhash}{31fbba1e850f6b30d91acc45d68ef995}
+      \strng{authornamehash}{31fbba1e850f6b30d91acc45d68ef995}
+      \strng{authorfullhash}{31fbba1e850f6b30d91acc45d68ef995}
+      \field{sortinit}{K}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Multivariate Behavioral Research}
+      \field{number}{4}
+      \field{title}{Relating factors between studies based upon different individuals}
+      \field{volume}{6}
+      \field{year}{1971}
+      \field{pages}{409\bibrangedash 422}
+      \range{pages}{14}
     \endentry
     \entry{norman1963}{article}{}
       \name{author}{1}{}{%
