@@ -34,6 +34,10 @@
 
 \maketitle
 
+\begin{abstract}
+  We use techniques taken from, and some further inspired by, original research in personality traits to examine the personality survey data from 94 students in 2 classes in 2 schools in Barcelona. We find that the Big Five personality traits are definitively...
+\end{abstract}
+
 \section{Background}
 It's easy to measure the knowledge a student has memorized: sit them down, watch them to make sure they have not written any notes on their hands, and make them answer questions. If they don't remember the facts you ask them, they will answer incorrectly.
 
@@ -141,6 +145,18 @@ Where $\Lambda$ refers to the normalized loadings. This objective will be most u
 
 \section{Data}
 
+The data used in this exploration is fairly simple, but it is also important to understand the greater data context in which this study is taking place.
+
+Here we will analyze two groups of self-reported surveys, referred hereafter as Big Five and Others. These surveys were administered to students in two different classes, in different schools, with different teaching techniques. There are 94 students in total that answered these surveys. The Big Five survey is a questionnaire that has been created explicitly to measure the Big Five personality questions, and it comes with a ``key'', which explains which trait each question maps to. Each question maps positively to one trait only. The Others surveys consist of questions whose key has been intentionally hidden from the writer, but they purport to summarize a persons personality by the way in which they answer the questions in a similar fashion.
+
+Outside of the scope of this paper, but in the scope of this work, is one other primary data set for which we currently have data: EEG data measured during Stroop, 3-back, and 2-back concentration tasks. Everything we do here is to be understood in the context of better understanding all aspects and requirements for techniques that can be used on this particular data set, which is decidedly very different in many ways, but which also purports to measure personality traits of individuals.
+
+Furthermore, there are other opportunities to gather additional tests and measurements of these students, including how they cooperate under difficult conditions, tests for Mindset, and questions regarding social networks connections within the class. This data is not available to us at the moment, but should give a flavor for the variety over which our eventual prediction task will be expected to operate.
+
+\begin{enumerate}
+\item Experiments and challenges in which students cooporation
+\end{enumerate}
+
 \section{Theory + Data}
 
 Here we seek to answer the fundamental question of this thesis: does the Big Five factor model describe the personalities recorded in our surveys? We will address this in the following ways:
@@ -154,16 +170,44 @@ Here we seek to answer the fundamental question of this thesis: does the Big Fiv
 \item How do the latent factor representations of our two survey groups correlate?
 \end{enumerate}
 
-As set out in the beginning, the spirit of this journey is to understand the origins of these personality traits, and then to see if we find them in our own data. Norman's method primarily consisted of finding a principle axes solution and rotating the factors via varimax rotation. So we start with repeating exactly that process for our Big Five survey data, examining how much variance is explained, refer to \ref{table:pca-variance}. We see that our first principle axes explain approximately 46\% of the variance of our data, while the same data, when interpreted via the official encoding for the Big Five traits, is explained only up to 37\%.
+As set out in the beginning, the spirit of this journey is to understand the origins of these personality traits, and then to see if we find them in our own data. Norman's method primarily consisted of finding a principle axes solution and rotating the factors via varimax rotation. So we start with repeating exactly that process for our Big Five survey data, examining how much variance is explained, refer to table \ref{table:pca-variance}. We see that our first principle axes explain approximately 46\% of the variance of our data, while the same data, when interpreted via the official encoding for the Big Five traits, is explained only up to 37\%.
 
-As discussed previously, PCA will differ from a maximum likelihood solution when the error variance is heterogeneous across factors. Given that we have reason to expect this possibility in our data, we estimate a generative model via expectation maximization and regenerate a similar table, \ref{table:ml-variance}, where we see that now the percentage of explained variance by our factors has now been reduced to 42\%. Here we have an initial answer to question number 2.
+As discussed previously, PCA will differ from a maximum likelihood solution when the error variance is heterogeneous across factors. Given that we have reason to expect this possibility in our data, we estimate a generative model via expectation maximization and regenerate a similar table, table \ref{table:ml-variance}, where we see that now the percentage of explained variance by our factors has now been reduced to 42\%. Here we have an initial answer to question number 2.
 
-It can be clearly seen in the explained variance tables that the overall percentage of explained variance does not change with rotation, but that through varimax rotation the dispersion of variance is more equal, in line with the Big Five traits. This aligns with the previously stated theory, we are rotating the coordinate axes, but the subspace maintains the same, the rotation is done for our own purposes, in the traditional varimax case that purpose is to increase interpretability.
 
-We hijack this process for our own purpose here, and explore several methods of rotating the coordinate axes such that we align the factors more closely with the big five, to see how well these factors might actually correlate with those of the Big Five, given the correct rotation.
+
+\begin{table}
+\begin{tabular}{lrrrrr}
+\toprule
+{} &          0 &         1 &          2 &         3 &         4 \\
+\midrule
+Components &  23.543123 &  7.580135 &   6.321525 &  5.111549 &  3.795437 \\
+Varimax    &  14.691594 &  5.573418 &  12.284804 &  7.432257 &  6.369697 \\
+Big Five   &   7.569611 &  7.590264 &   7.664056 &  6.073631 &  8.321417 \\
+\bottomrule
+\end{tabular}
+\caption{Explained Variance of PCA}\label{table:pca-variance}
+\end{table}
+
+
+\begin{table}
+\begin{tabular}{lrrrrr}
+\toprule
+{} &          0 &          1 &         2 &         3 &         4 \\
+\midrule
+Components &  22.586949 &   6.474895 &  5.544954 &  4.367940 &  2.922496 \\
+Varimax    &  13.645560 &  10.342161 &  7.858926 &  4.543434 &  5.507152 \\
+Big Five   &   7.569611 &   7.590264 &  7.664056 &  6.073631 &  8.321417 \\
+\bottomrule
+\end{tabular}
+\caption{Explained Variance of Maximum Likelihood Estimation}\label{table:ml-variance}
+\end{table}
 
 \begin{figure}
 \includegraphics[width=\linewidth]{images/grid_bf.png}
+\\
+\\
+\\
 \begin{tabular}{lrrrrr}
 \toprule
 {} &         0 &         1 &         2 &         3 &         4 \\
@@ -177,13 +221,71 @@ Identity           &  0.331887 &  0.291065 &  0.359494 &  0.332125 &  0.195156 \
 \caption{Different Rotations of Factors of Big Five Survey}\label{fig:grid-bf}
 \end{figure}
 
+\begin{figure}
+\includegraphics[width=\linewidth]{images/grid_others.png}
+\\
+\\
+\\
+\begin{tabular}{lrrrrr}
+\toprule
+{} &         0 &         1 &         2 &         3 &         4 \\
+\midrule
+Varimax Oblique    &  0.493596 &  0.639058 &  0.489409 &  0.421770 &  0.312784 \\
+Varimax Orthogonal &  0.071356 &  0.725579 &  0.316222 &  0.470429 &  0.227975 \\
+L2 Orthogonal      &  0.512753 &  0.423017 &  0.546490 &  0.469321 &  0.600568 \\
+Identity           &  0.083879 &  0.025884 &  0.107176 &  0.134254 &  0.031207 \\
+\bottomrule
+\end{tabular}
+\caption{Different Rotations of Factors of the Others Survey}\label{fig:grid-others}
+\end{figure}
 
 
-It is worth noting two interesting facts here that address directly the concern of Norman we recounted in the history section, namely: ``is there a large general factor, relating to general social desirability, present anywhere in these results.''
+It can be clearly seen in the explained variance tables that the overall percentage of explained variance does not change with rotation, but that through varimax rotation the dispersion of variance is more equal, in line with the Big Five traits. This aligns with the previously stated theory, we are rotating the coordinate axes, but the subspace maintains the same, the rotation is done for our own purposes, in the traditional varimax case that purpose is to increase interpretability.
+
+We hijack this process for our own purpose here, and explore several methods of rotating the coordinate axes such that we align the factors more closely with the big five, to see how well these factors might actually correlate with those of the Big Five, given the correct rotation.
+
+To begin with we utilize a simple gradient projection algorithm, first introduced by Jennrich and summarized in \ref{2005gradient}, which is an optimization routine that allows us to rotate, both orthogonally and obliquely, by a given objective function for which gradients will be estimated numerically. We optimize three versions of this algorithm and plot correlation graphs between the rotated factors and the Big Five traits, one being the simple L2 norm difference between the matrices, the other being an oblique and orthogonal rotation of an objective function we create, which is simply the varimax of the correlation between the factors and the Big Five traits.
+
+In this way we are taking this idea of simple structure and using it as a criterion for measuring how well our latent factors match the Big Five traits. Results of the correlation coefficients are plotted in figures \ref{fig:grid-bf} and \ref{fig:grid-others} and the maximum correlation with a Big Five factor is included for each factor. Note, that the factors are indexed 0-4, and the Big Five traits are indexed 5-10.
+
+We take note of facts regarding the Big Five surveys and the Others survey:
+
+\paragraph{Big Five Surveys}
+While both the orthogonal L2 rotation and the orthogonal varimax rotation of the factors in the big five survey generate relatively high correlation coefficients with some of the Big Five traits, the oblique varimax iteration delivers scores that are extremely high, between 92-98\%. The success of all of the rotations leads us to a strong conclusion that these are the same latent factors, a major conclusion.
+
+\paragraph{Others Survey}
+Rotation of the factors in the Others survey, on the other hand, is decidedly less easy to interpret. The L2 approximation gives only three factors correlated more than 50\%, and the varimax, which has a simpler structure, only has one.
+\\
+\\
+The natural next step, now that we're correlating latent factors, is to enter the world of Canonical Correspondence Analysis and Partial Least Square analysis, which attempts to do exactly that explicitly. There is a traditional algorithm, a few other versions, but for our purposes we explain the one that provides the best results in this circumstance, and happens to be so simple it can be accurately described in a catchphrase: PCA For Cross-Covariance Matrices. This is sometimes referred to as PLS-SVD, and it's brutally simply: we extract the SVD decomposition of the cross covariance matrix, and use the U and V as our loadings.
+
+We rotate these orthogonally according to the L2 norm difference with Big Five traits, and see extremely promising results, with the highest correlation coefficients we've yet seen for the Other Surveys, with four of the factors with over 60\% correlation.
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/cross_svd.png}
+\\
+\\
+\\
+\begin{tabular}{lrrrrr}
+\toprule
+{} &         0 &         1 &         2 &         3 &         4 \\
+\midrule
+Big Five &  0.948249 &  0.858054 &  0.874393 &  0.915086 &  0.923285 \\
+Others   &  0.741755 &  0.634072 &  0.703748 &  0.530984 &  0.696755 \\
+\bottomrule
+\end{tabular}
+\caption{Correlation of L2 Rotated PLS-SVD}\label{fig:pls-svd}
+\end{figure}
+
+
+It is worth noting two interesting facts about all the above results that address directly the concern of Norman we recounted in the history section, namely: ``is there a large general factor, relating to general social desirability, present anywhere in these results.''
+
+The first is the success of the oblique rotation, or the PLS-SVD which returned oblique factors. This is natural given the correlation of the Big Five traits in our data (lower left of the heat maps), but that in and of itself is concerning. Along with the way in which their is one trait that is completely uncorrelated with every other one (emotional instability), and combined with the single factor with extremely high variance in initial raw PCA and ML Factor Analysis runs, indicates that, quite possibly, there is one large general factor in our data. This is why allowing the first three factors to correlate produces higher coefficients.
+
+
 \section{Regression}
 
 A predictive model for multiple sources of high-dimensional data built on 94 observations on a cross-validated score alone is beyond the bounds of good conscious of this writer. As we have stated clearly in the beginning, we will need to rely on theory and decades of work in the field of personality psychology to make assumptions that allow us to accomplish this task, and the first of which is precisely the assumption we have attempted to validate in this thesis. The assumptions we will set in order to solve the prediction problem are:
-
 
 \begin{enumerate}
 \item The Big Five personality traits are alive and well in our population, and measurable through our data-collection techniques.
@@ -191,6 +293,8 @@ A predictive model for multiple sources of high-dimensional data built on 94 obs
 \item One or more of these traits will exist as important latent factors in every measurement we use to predict noncognitive skills of students.
 
 \item For each measurement, the exact number or identification of exhibited traits is not determined ahead-of-time, but there will be prior beliefs.
+
+\item Scoring will not necessarily be restricted to cardinal measures, in the realm of comparison and grading, ordinality will take precedence.
 \end{enumerate}
 
 Similarly, our ideal predictive model should relax the following assumptions which, while traditional to many instances of work in this field, will restrict us in flexibility to adopt the novel forms of data gathering and measurement that are core to the spirit of this work:
@@ -200,20 +304,42 @@ Similarly, our ideal predictive model should relax the following assumptions whi
 \item The linear relationship between latent factors and observed variables.
 \end{enumerate}
 
-We restrict postulations about the work or directions to find such a model to the conclusion. Instead, we will fit a linear regression model that fulfills none of the above requirements. We do this, naturally, as nothing more than an exercise, and include it because it turns out to be relatively elucidating.
+We restrict postulations about the work or directions to find such a model to the conclusion. Instead, we will fit a linear regression model that fulfills none of the above requirements. We do this, naturally, as nothing more than an exercise, and include it out of interest.
 
 For regression with a large number of highly correlated variables and an extremely small number of observations, we use elastic net regularization, whose parameters we pick via a grid search over 3-fold cross validation. The regularization of elastic net is given by:
-
 
 $$
 \hat{\beta} = \argmin_{\beta}||y - \mathbf{X}\beta ||^2 + \lambda_2|| \beta ||^2 + \lambda_1 || \beta ||_1
 $$
 
-\section{Interpretability}
+This simple linear regression is surprisingly effective, we compare it to all other factor rotation techniques in a similar pattern as all our other plots, which can be seen in figure \ref{fig:regression}. We see that, with the exception of the problematic ``emotional instability'' trait from the Big Five, the factors of the linear regression have correlation coefficients over 80\% each. We cannot say that we have equal confidence as we did with the Big Five survey that the Big Five traits are the five major factors of the Other Surveys, but we have mounting evidence that there are at least three or four that may be present.
+
+As mentioned in the outset, cardinality as a measure of cost for our factor estimation is not useful for our context, and this regression was run with a standard squared cardinal loss function, and we refrain from examining further characteristics of this result as, as previously emphasized, it is included for comparison to the factor rotation techniques, to provide a context for them.
+
+We note that again we see that the factors found by the regression are highly correlated, except for the single outlying ``emotional instability.''
+
+
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/linear_reg.png}
+\\
+\\
+\\
+\begin{tabular}{lrrrrr}
+\toprule
+{} &         0 &         1 &         2 &         3 &         4 \\
+\midrule
+Linear Regression &  0.800271 &  0.803592 &  0.840472 &  0.599498 &  0.825383 \\
+\bottomrule
+\end{tabular}
+\caption{Correlation of Factors Found by Linear Regression}\label{fig:regression}
+\end{figure}
 
 \section{Conclusion}
 
-We have unearthed the original techniques, theories, and concerns of the original authors of the Big Five personality traits and determined resoundingly that, indeed, these traits are present and measurable in the population and data-collection methods we are using in our work.
+We have unearthed the original techniques, theories, and concerns of the original authors of the Big Five personality traits and determined resoundingly that, indeed, these traits are present and measurable in the population and data-collection methods we are using in our work. Specifically, we found that each of the five major factors self-evident in the data of the Big Five survey are extremely correlated with each of the Big Five personality traits.
+
+The results for the Other surveys are quite mixed, where at most three or possibly four of the driving factors from that space can be identified to Big Five traits.
 
 We raised a serious concern about the existence of a single general factor, which combined with the asymmetric answers to some of the survey questions could indicate that the surveys themselves are misaligned with the population. This was a confounding factor in our ability to determine the Big Five traits, and while it was not in the end insurmountable, it is definite cause for concern and caution in future efforts.
 

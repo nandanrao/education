@@ -297,7 +297,7 @@
     \section{Math}\label{math}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}318}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+{\color{incolor}In [{\color{incolor}651}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
           \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
           \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k+kn}{as} \PY{n+nn}{sns}
           \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
@@ -362,7 +362,7 @@ Populating the interactive namespace from numpy and matplotlib
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}427}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}exlained\PYZus{}variance}\PY{p}{(}\PY{n}{df}\PY{p}{,} \PY{n}{L}\PY{p}{,} \PY{n}{PCA} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{p} \PY{o}{=} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}675}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}exlained\PYZus{}variance}\PY{p}{(}\PY{n}{df}\PY{p}{,} \PY{n}{L}\PY{p}{,} \PY{n}{PCA} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{p} \PY{o}{=} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
               \PY{c+c1}{\PYZsh{} sklearn mangles the PCA loadings, so we treat it differently}
               \PY{k}{if} \PY{n}{PCA}\PY{p}{:}
                   \PY{n}{F} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{normalize}\PY{p}{(}\PY{n}{L}\PY{p}{)}\PY{o}{.}\PY{n}{T}\PY{p}{)}
@@ -372,11 +372,12 @@ Populating the interactive namespace from numpy and matplotlib
               \PY{k}{print} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Summed variance of first }\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{ components: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{p}\PY{p}{,}\PY{n}{v}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{:}\PY{n}{p}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{)}
               \PY{k}{return} \PY{n}{v}
           
-          \PY{k}{def} \PY{n+nf}{plot\PYZus{}corr}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{B}\PY{p}{)}\PY{p}{:}
+          \PY{k}{def} \PY{n+nf}{plot\PYZus{}corr}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{B}\PY{p}{,} \PY{n}{printing}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}\PY{p}{:}
               \PY{n}{corr} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{corrcoef}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{B}\PY{p}{,} \PY{n}{rowvar} \PY{o}{=} \PY{n+nb+bp}{False}\PY{p}{)}
               \PY{n}{p} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{heatmap}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{corr}\PY{p}{)}\PY{p}{,} \PY{n}{center}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-              \PY{k}{print} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{max\PYZus{}corr}\PY{p}{(}\PY{n}{F}\PY{p}{,} \PY{n}{bigfive}\PY{p}{)}\PY{p}{,} \PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Maximum Factor Correlation}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{T} 
+              \PY{k}{if} \PY{n}{printing}\PY{p}{:}
+                  \PY{k}{print} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{max\PYZus{}corr}\PY{p}{(}\PY{n}{F}\PY{p}{,} \PY{n}{bigfive}\PY{p}{)}\PY{p}{,} \PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Maximum Factor Correlation}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{T} 
               
           \PY{k}{def} \PY{n+nf}{rotated\PYZus{}fa}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{rotator}\PY{p}{,} \PY{n}{rotate\PYZus{}factors}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{comps}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
               \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} rotator gets called with F factor matrix \PYZdq{}\PYZdq{}\PYZdq{}}
@@ -396,8 +397,10 @@ Populating the interactive namespace from numpy and matplotlib
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}196}]:} \PY{n}{sns}\PY{o}{.}\PY{n}{stripplot}\PY{p}{(}\PY{n}{x} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{variable}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{melt}\PY{p}{(}\PY{n}{bigfive}\PY{p}{)}\PY{p}{,} \PY{n}{orient} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{h}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}700}]:} \PY{n}{sns}\PY{o}{.}\PY{n}{set}\PY{p}{(}\PY{n}{font}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{serif}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{font\PYZus{}scale}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+          \PY{n}{g} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{stripplot}\PY{p}{(}\PY{n}{x} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{variable}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{melt}\PY{p}{(}\PY{n}{bigfive}\PY{p}{)}\PY{p}{,} \PY{n}{orient} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{h}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
           \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+          \PY{n}{sns}\PY{o}{.}\PY{n}{reset\PYZus{}orig}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -407,7 +410,7 @@ Populating the interactive namespace from numpy and matplotlib
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}433}]:} \PY{n}{bf\PYZus{}pca} \PY{o}{=} \PY{n}{PCA}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}696}]:} \PY{n}{bf\PYZus{}pca} \PY{o}{=} \PY{n}{PCA}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{)}
           \PY{n}{A} \PY{o}{=} \PY{n}{bf\PYZus{}pca}\PY{o}{.}\PY{n}{components\PYZus{}}\PY{o}{.}\PY{n}{T}
           \PY{n}{V}\PY{p}{,}\PY{n}{T} \PY{o}{=} \PY{n}{rotate\PYZus{}factors}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{varimax}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
           \PY{n}{n} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{stack}\PY{p}{(}\PY{p}{[}
@@ -415,7 +418,7 @@ Populating the interactive namespace from numpy and matplotlib
                   \PY{n}{get\PYZus{}exlained\PYZus{}variance}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{,} \PY{n}{V}\PY{o}{.}\PY{n}{T}\PY{p}{)}\PY{p}{,}
                   \PY{n}{get\PYZus{}exlained\PYZus{}variance}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{,} \PY{n}{bf\PYZus{}comps}\PY{o}{.}\PY{n}{T}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{T}
           
-          \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Components}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Varimax}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Big Five}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+          \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Components}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Varimax}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Big Five}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{T}
 \end{Verbatim}
 
 
@@ -427,12 +430,10 @@ Summed variance of first 5 components: 37.2189799093
     \end{Verbatim}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}433}]:}    Components    Varimax  Big Five
-          0   23.543123  14.691594  7.569611
-          1    7.580135   5.573418  7.590264
-          2    6.321525  12.284804  7.664056
-          3    5.111549   7.432257  6.073631
-          4    3.795437   6.369697  8.321417
+{\color{outcolor}Out[{\color{outcolor}696}]:}                     0         1          2         3         4
+          Components  23.543123  7.580135   6.321525  5.111549  3.795437
+          Varimax     14.691594  5.573418  12.284804  7.432257  6.369697
+          Big Five     7.569611  7.590264   7.664056  6.073631  8.321417
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -448,7 +449,7 @@ Summed variance of first 5 components: 37.2189799093
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}435}]:} \PY{n}{A}\PY{p}{,}\PY{n}{FA} \PY{o}{=} \PY{n}{rotated\PYZus{}fa}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{,} \PY{k}{lambda} \PY{n}{F}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{n}{F}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}694}]:} \PY{n}{A}\PY{p}{,}\PY{n}{FA} \PY{o}{=} \PY{n}{rotated\PYZus{}fa}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{,} \PY{k}{lambda} \PY{n}{F}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{n}{F}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
           \PY{n}{V}\PY{p}{,}\PY{n}{FV} \PY{o}{=} \PY{n}{rotated\PYZus{}fa}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{,} \PY{k}{lambda} \PY{n}{L}\PY{p}{:} \PY{n}{rotate\PYZus{}factors}\PY{p}{(}\PY{n}{L}\PY{o}{.}\PY{n}{T}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{varimax}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n+nb+bp}{False}\PY{p}{)}
           
           \PY{n}{n} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{stack}\PY{p}{(}\PY{p}{[}
@@ -456,7 +457,7 @@ Summed variance of first 5 components: 37.2189799093
                   \PY{n}{get\PYZus{}exlained\PYZus{}variance}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{,} \PY{n}{V}\PY{p}{,} \PY{n+nb+bp}{False}\PY{p}{)}\PY{p}{,}
                   \PY{n}{get\PYZus{}exlained\PYZus{}variance}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{,} \PY{n}{bf\PYZus{}comps}\PY{o}{.}\PY{n}{T}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{T}
           
-          \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Components}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Varimax}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Big Five}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+          \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Components}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Varimax}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Big Five}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{T}
 \end{Verbatim}
 
 
@@ -468,14 +469,17 @@ Summed variance of first 5 components: 37.2189799093
     \end{Verbatim}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}435}]:}    Components    Varimax  Big Five
-          0   22.586949  13.645560  7.569611
-          1    6.474895  10.342161  7.590264
-          2    5.544954   7.858926  7.664056
-          3    4.367940   4.543434  6.073631
-          4    2.922496   5.507152  8.321417
+{\color{outcolor}Out[{\color{outcolor}694}]:}                     0          1         2         3         4
+          Components  22.586949   6.474895  5.544954  4.367940  2.922496
+          Varimax     13.645560  10.342161  7.858926  4.543434  5.507152
+          Big Five     7.569611   7.590264  7.664056  6.073631  8.321417
 \end{Verbatim}
             
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}604}]:} \PY{n}{rotations} \PY{o}{=} \PY{p}{\PYZob{}}
               \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Identity}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{k}{lambda} \PY{n}{F}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{n}{F}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{,}
@@ -527,7 +531,7 @@ Identity           \&  0.083879 \&  0.025884 \&  0.107176 \&  0.134254 \&  0.031
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}612}]:} \PY{c+c1}{\PYZsh{} facet grid practise}
+{\color{incolor}In [{\color{incolor}670}]:} \PY{c+c1}{\PYZsh{} facet grid practise}
           \PY{c+c1}{\PYZsh{} L,F = rotated\PYZus{}fa(bf\PYZus{}survey\PYZus{}scaled, lambda F: np.eye(F.shape[1]))}
           \PY{c+c1}{\PYZsh{} L2,F2 = rotated\PYZus{}fa(bf\PYZus{}survey\PYZus{}scaled, lambda F: target\PYZus{}rotation(F, bigfive))}
           
@@ -544,10 +548,14 @@ Identity           \&  0.083879 \&  0.025884 \&  0.107176 \&  0.134254 \&  0.031
           
               \PY{n}{dfit} \PY{o}{=} \PY{k}{lambda} \PY{n}{d}\PY{p}{,}\PY{n}{i}\PY{p}{:} \PY{n}{pd}\PY{o}{.}\PY{n}{melt}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{d}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{assign}\PY{p}{(}\PY{n}{fa} \PY{o}{=} \PY{n}{i}\PY{p}{)}    
               \PY{n}{Fs} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{concat}\PY{p}{(}\PY{p}{[}\PY{n}{dfit}\PY{p}{(}\PY{n}{m}\PY{p}{,}\PY{n}{i}\PY{p}{)} \PY{k}{for} \PY{n}{m}\PY{p}{,}\PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{Fs}\PY{p}{,} \PY{n}{titles}\PY{p}{)}\PY{p}{]}\PY{p}{)}
-              \PY{n}{g} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{FacetGrid}\PY{p}{(}\PY{n}{Fs}\PY{p}{,} \PY{n}{col}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fa}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{col\PYZus{}wrap}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{aspect} \PY{o}{=} \PY{l+m+mf}{1.25}\PY{p}{)}
-              \PY{n}{g}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{heatmap}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{variable}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{sns}\PY{o}{.}\PY{n}{set}\PY{p}{(}\PY{n}{font\PYZus{}scale}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{font}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{serif}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{g} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{FacetGrid}\PY{p}{(}\PY{n}{Fs}\PY{p}{,} \PY{n}{col}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fa}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{col\PYZus{}wrap}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{aspect} \PY{o}{=} \PY{l+m+mf}{1.2}\PY{p}{)}
+              \PY{n}{cbar\PYZus{}ax} \PY{o}{=} \PY{n}{g}\PY{o}{.}\PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}axes}\PY{p}{(}\PY{p}{[}\PY{o}{.}\PY{l+m+mi}{92}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{3}\PY{p}{,} \PY{o}{.}\PY{l+m+mo}{02}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}
+              \PY{n}{g}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{heatmap}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{variable}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{cbar\PYZus{}ax}\PY{o}{=}\PY{n}{cbar\PYZus{}ax}\PY{p}{)}
               \PY{n}{g}\PY{o}{.}\PY{n}{set\PYZus{}axis\PYZus{}labels}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
               \PY{n}{g}\PY{o}{.}\PY{n}{set\PYZus{}titles}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZob{}col\PYZus{}name\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{g}\PY{o}{.}\PY{n}{fig}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{right}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{9}\PY{p}{)}
+              \PY{n}{sns}\PY{o}{.}\PY{n}{reset\PYZus{}orig}\PY{p}{(}\PY{p}{)}
               \PY{k}{return} \PY{n}{g}
           
           \PY{n}{heatedfacet}\PY{p}{(}\PY{n}{all\PYZus{}factors\PYZus{}others}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{bigfive}\PY{p}{,} \PY{n}{all\PYZus{}factors\PYZus{}others}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}\PY{p}{)}
@@ -555,25 +563,25 @@ Identity           \&  0.083879 \&  0.025884 \&  0.107176 \&  0.134254 \&  0.031
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}612}]:} <seaborn.axisgrid.FacetGrid at 0x7fa1dda89cd0>
-\end{Verbatim}
-            
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_14_1.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}613}]:} \PY{n}{heatedfacet}\PY{p}{(}\PY{n}{all\PYZus{}factors\PYZus{}bf}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{bigfive}\PY{p}{,} \PY{n}{all\PYZus{}factors\PYZus{}bf}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-
-
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}613}]:} <seaborn.axisgrid.FacetGrid at 0x7fa1deeeb350>
+{\color{outcolor}Out[{\color{outcolor}670}]:} <seaborn.axisgrid.FacetGrid at 0x7fa1bea71190>
 \end{Verbatim}
             
     \begin{center}
     \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_15_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}637}]:} \PY{n}{heatedfacet}\PY{p}{(}\PY{n}{all\PYZus{}factors\PYZus{}bf}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{bigfive}\PY{p}{,} \PY{n}{all\PYZus{}factors\PYZus{}bf}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}637}]:} <seaborn.axisgrid.FacetGrid at 0x7fa1cd4aff50>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_16_1.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -585,7 +593,7 @@ Identity           \&  0.083879 \&  0.025884 \&  0.107176 \&  0.134254 \&  0.031
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_16_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_17_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -603,7 +611,7 @@ Maximum Factor Correlation  0.88174  0.781647  0.747987  0.95297  0.80298
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_17_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_18_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -622,7 +630,7 @@ Maximum Factor Correlation  0.88174  0.781647  0.747987  0.95297  0.80298
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_18_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_19_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -633,13 +641,13 @@ Maximum Factor Correlation  0.748137  0.55708  0.369989  0.93869  0.932587
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}439}]:} \PY{n}{L}\PY{p}{,}\PY{n}{F} \PY{o}{=} \PY{n}{rotated\PYZus{}fa}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{,} \PY{k}{lambda} \PY{n}{F}\PY{p}{:} \PY{n}{varimax\PYZus{}gpa}\PY{p}{(}\PY{n}{F}\PY{p}{,} \PY{n}{bigfive}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{oblique}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}650}]:} \PY{n}{L}\PY{p}{,}\PY{n}{F} \PY{o}{=} \PY{n}{rotated\PYZus{}fa}\PY{p}{(}\PY{n}{bf\PYZus{}survey\PYZus{}scaled}\PY{p}{,} \PY{k}{lambda} \PY{n}{F}\PY{p}{:} \PY{n}{varimax\PYZus{}gpa}\PY{p}{(}\PY{n}{F}\PY{p}{,} \PY{n}{bigfive}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{oblique}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
           \PY{n}{plot\PYZus{}corr}\PY{p}{(}\PY{n}{F}\PY{p}{,} \PY{n}{bigfive}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_19_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_20_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -656,7 +664,7 @@ Maximum Factor Correlation  0.968546  0.943092  0.922326  0.973424  0.942151
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_20_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_21_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -673,7 +681,7 @@ Maximum Factor Correlation  0.083879  0.025884  0.107176  0.134254  0.031207
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_21_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_22_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -694,7 +702,7 @@ Maximum Factor Correlation  0.512753  0.423017  0.54649  0.469321  0.600568
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_22_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_23_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -711,7 +719,7 @@ Maximum Factor Correlation  0.45928  0.364635  0.534948  0.481461  0.580808
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_23_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_24_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -733,7 +741,7 @@ Maximum Factor Correlation  0.493596  0.639058  0.489409  0.42177  0.312784
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_24_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_25_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -754,7 +762,7 @@ Summed variance of first 5 components: 41.7923318685
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_25_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_26_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -766,23 +774,41 @@ Summed variance of first 5 components: 41.7923318685
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}446}]:} \PY{n}{F} \PY{o}{=} \PY{n}{rotate}\PY{p}{(}\PY{n}{plssvd}\PY{o}{.}\PY{n}{y\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{T}\PY{p}{)} 
-          \PY{n}{plot\PYZus{}corr}\PY{p}{(}\PY{n}{F}\PY{p}{,} \PY{n}{bigfive}\PY{p}{)}
-          \PY{n}{g} \PY{o}{=} \PY{n}{get\PYZus{}exlained\PYZus{}variance}\PY{p}{(}\PY{n}{others}\PY{p}{,} \PY{n}{plssvd}\PY{o}{.}\PY{n}{y\PYZus{}weights\PYZus{}}\PY{o}{.}\PY{n}{T}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}674}]:} \PY{n}{T} \PY{o}{=} \PY{n}{target\PYZus{}rotation}\PY{p}{(}\PY{n}{plssvd}\PY{o}{.}\PY{n}{x\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{bigfive}\PY{p}{)}
+          \PY{n}{Fs} \PY{o}{=} \PY{p}{[}\PY{n}{rotate}\PY{p}{(}\PY{n}{F}\PY{p}{,} \PY{n}{T}\PY{p}{)} \PY{k}{for} \PY{n}{F} \PY{o+ow}{in} \PY{p}{[}\PY{n}{plssvd}\PY{o}{.}\PY{n}{x\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{plssvd}\PY{o}{.}\PY{n}{y\PYZus{}scores\PYZus{}}\PY{p}{]}\PY{p}{]}
+          \PY{n}{n} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{max\PYZus{}corr}\PY{p}{(}\PY{n}{f}\PY{p}{,} \PY{n}{bigfive}\PY{p}{)} \PY{k}{for} \PY{n}{f} \PY{o+ow}{in} \PY{n}{Fs}\PY{p}{]}\PY{p}{)}
+          \PY{k}{print} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{index} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Big Five}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Others}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}latex}\PY{p}{(}\PY{p}{)}
+          \PY{n}{heatedfacet}\PY{p}{(}\PY{n}{Fs}\PY{p}{,} \PY{n}{bigfive}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Big Five}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Others}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+\textbackslash{}begin\{tabular\}\{lrrrrr\}
+\textbackslash{}toprule
+\{\} \&         0 \&         1 \&         2 \&         3 \&         4 \textbackslash{}\textbackslash{}
+\textbackslash{}midrule
+Big Five \&  0.948249 \&  0.858054 \&  0.874393 \&  0.915086 \&  0.923285 \textbackslash{}\textbackslash{}
+Others   \&  0.741755 \&  0.634072 \&  0.703748 \&  0.530984 \&  0.696755 \textbackslash{}\textbackslash{}
+\textbackslash{}bottomrule
+\textbackslash{}end\{tabular\}
+
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}674}]:} <seaborn.axisgrid.FacetGrid at 0x7fa1bae4b310>
+\end{Verbatim}
+            
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_26_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_27_2.png}
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{Verbatim}[commandchars=\\\{\}]
-                                   0         1         2         3         4
-Maximum Factor Correlation  0.741755  0.634072  0.703748  0.530984  0.696755
-Summed variance of first 5 components: 41.1344585457
+    \section{Regression}\label{regression}
 
-    \end{Verbatim}
+\begin{itemize}
+\item
+\end{itemize}
 
     \section{Elastic Net}\label{elastic-net}
 
@@ -792,7 +818,7 @@ Summed variance of first 5 components: 41.1344585457
 \]
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}447}]:} \PY{n}{enet} \PY{o}{=} \PY{n}{MultiElasticNet}\PY{p}{(}\PY{n}{alpha} \PY{o}{=} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{n}{l1\PYZus{}ratio} \PY{o}{=} \PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}671}]:} \PY{n}{enet} \PY{o}{=} \PY{n}{MultiElasticNet}\PY{p}{(}\PY{n}{alpha} \PY{o}{=} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{n}{l1\PYZus{}ratio} \PY{o}{=} \PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}
           \PY{n}{fitted} \PY{o}{=} \PY{n}{enet}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{others}\PY{p}{,} \PY{n}{bigfive}\PY{o}{.}\PY{n}{as\PYZus{}matrix}\PY{p}{(}\PY{p}{)}\PY{p}{)}
           \PY{n}{L} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{enet}\PY{o}{.}\PY{n}{coef\PYZus{}}\PY{p}{)}\PY{o}{.}\PY{n}{T}
           \PY{n}{plot\PYZus{}corr}\PY{p}{(}\PY{n}{others\PYZus{}scaled}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{L}\PY{p}{)}\PY{p}{,} \PY{n}{bigfive}\PY{p}{)}
@@ -801,17 +827,45 @@ Summed variance of first 5 components: 41.1344585457
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_28_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_30_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-                                   0         1         2         3         4
-Maximum Factor Correlation  0.741755  0.634072  0.703748  0.530984  0.696755
+                                   0         1        2         3         4
+Maximum Factor Correlation  0.177783  0.043304  0.39971  0.476579  0.737269
 Summed variance of first 5 components: 39.3411583718
 
     \end{Verbatim}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}691}]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{max\PYZus{}corr}\PY{p}{(}\PY{n}{others\PYZus{}scaled}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{L}\PY{p}{)}\PY{p}{,} \PY{n}{bigfive}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{T}
+          \PY{n}{df}\PY{o}{.}\PY{n}{index} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Linear Regression}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+          \PY{k}{print} \PY{n}{df}\PY{o}{.}\PY{n}{to\PYZus{}latex}\PY{p}{(}\PY{p}{)}
+          
+          \PY{n}{sns}\PY{o}{.}\PY{n}{set}\PY{p}{(}\PY{n}{font}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{serif}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{plot\PYZus{}corr}\PY{p}{(}\PY{n}{others\PYZus{}scaled}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{L}\PY{p}{)}\PY{p}{,} \PY{n}{bigfive}\PY{p}{,} \PY{n+nb+bp}{False}\PY{p}{)}
+          \PY{n}{sns}\PY{o}{.}\PY{n}{reset\PYZus{}orig}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\textbackslash{}begin\{tabular\}\{lrrrrr\}
+\textbackslash{}toprule
+\{\} \&         0 \&         1 \&         2 \&         3 \&         4 \textbackslash{}\textbackslash{}
+\textbackslash{}midrule
+Linear Regression \&  0.800271 \&  0.803592 \&  0.840472 \&  0.599498 \&  0.825383 \textbackslash{}\textbackslash{}
+\textbackslash{}bottomrule
+\textbackslash{}end\{tabular\}
+
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{defense_files/defense_31_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
 
     % Add a bibliography block to the postdoc
     

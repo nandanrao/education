@@ -34,7 +34,12 @@
     "Load"
     "B")
    (LaTeX-add-labels
-    "fig:grid-bf")
+    "table:pca-variance"
+    "table:ml-variance"
+    "fig:grid-bf"
+    "fig:grid-others"
+    "fig:pls-svd"
+    "fig:regression")
    (LaTeX-add-environments
     '("proof" LaTeX-env-args ["argument"] 0)
     '("prop" LaTeX-env-args ["argument"] 0)
