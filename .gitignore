@@ -1,7 +1,9 @@
 EEG/
 .DS_Store
 .Rhistory
-.ipython/
+.ipython
+.local
+reveal.js/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

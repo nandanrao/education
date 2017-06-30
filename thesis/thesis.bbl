@@ -1,0 +1,144 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global/}
+    \entry{john1999}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=4f4190f98a8ac9333ba48ae07549238c}{%
+           family={John},
+           familyi={J\bibinitperiod},
+           given={Oliver\bibnamedelima P},
+           giveni={O\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{uniquename=0,hash=2c525f1bd85e78ed3db3bd39366734e1}{%
+           family={Srivastava},
+           familyi={S\bibinitperiod},
+           given={Sanjay},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Guilford}%
+      }
+      \strng{namehash}{991976e4c73ae58298cbdc08673d7487}
+      \strng{fullhash}{991976e4c73ae58298cbdc08673d7487}
+      \strng{authornamehash}{991976e4c73ae58298cbdc08673d7487}
+      \strng{authorfullhash}{991976e4c73ae58298cbdc08673d7487}
+      \field{sortinit}{J}
+      \field{sortinithash}{c86bd6cced82a15683b396c2169909ef}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Handbook of personality: Theory and research}
+      \field{number}{1999}
+      \field{title}{The Big Five trait taxonomy: History, measurement, and theoretical perspectives}
+      \field{volume}{2}
+      \field{year}{1999}
+      \field{pages}{102\bibrangedash 138}
+      \range{pages}{37}
+    \endentry
+    \entry{norman1963}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=2b7344a31226a0f7df1a0bdf67f832a1}{%
+           family={Norman},
+           familyi={N\bibinitperiod},
+           given={Warren\bibnamedelima T},
+           giveni={W\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Psychological Association}%
+      }
+      \strng{namehash}{2b7344a31226a0f7df1a0bdf67f832a1}
+      \strng{fullhash}{2b7344a31226a0f7df1a0bdf67f832a1}
+      \strng{authornamehash}{2b7344a31226a0f7df1a0bdf67f832a1}
+      \strng{authorfullhash}{2b7344a31226a0f7df1a0bdf67f832a1}
+      \field{sortinit}{N}
+      \field{sortinithash}{1163c28585427c673ad5a010cbf82f52}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Abnormal and Social Psychology}
+      \field{number}{6}
+      \field{title}{Toward an adequate taxonomy of personality attributes: Replicated factor structure in peer nomination personality ratings.}
+      \field{volume}{66}
+      \field{year}{1963}
+      \field{pages}{574}
+      \range{pages}{1}
+    \endentry
+    \entry{tupes1958}{report}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=a596078a44840537e470754dda359632}{%
+           family={Tupes},
+           familyi={T\bibinitperiod},
+           given={Ernest\bibnamedelima C},
+           giveni={E\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{uniquename=1,hash=be69b07babe1a256f90257cfa2ed5b1a}{%
+           family={Christal},
+           familyi={C\bibinitperiod},
+           given={Raymond\bibnamedelima C},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {WRIGHT AIR DEVELOPMENT CENTER WRIGHT-PATTERSON AFB OH}%
+      }
+      \strng{namehash}{84042488101ac20aa703eb542fe560a4}
+      \strng{fullhash}{84042488101ac20aa703eb542fe560a4}
+      \strng{authornamehash}{84042488101ac20aa703eb542fe560a4}
+      \strng{authorfullhash}{84042488101ac20aa703eb542fe560a4}
+      \field{sortinit}{T}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Stability of personality trait rating factors obtained under diverse conditions}
+      \field{type}{techreport}
+      \field{year}{1958}
+    \endentry
+    \entry{tupes1961}{report}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=a596078a44840537e470754dda359632}{%
+           family={Tupes},
+           familyi={T\bibinitperiod},
+           given={Ernest\bibnamedelima C},
+           giveni={E\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{uniquename=1,hash=c2db1bfca9be8bc486b388adc17386a4}{%
+           family={Christal},
+           familyi={C\bibinitperiod},
+           given={Raymond\bibnamedelima E},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {PERSONNEL RESEARCH LAB LACKLAND AFB TX}%
+      }
+      \strng{namehash}{af421bcc6bee54d04d2b7664c06b919c}
+      \strng{fullhash}{af421bcc6bee54d04d2b7664c06b919c}
+      \strng{authornamehash}{af421bcc6bee54d04d2b7664c06b919c}
+      \strng{authorfullhash}{af421bcc6bee54d04d2b7664c06b919c}
+      \field{sortinit}{T}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Recurrent personality factors based on trait ratings}
+      \field{type}{techreport}
+      \field{year}{1961}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
