@@ -94,6 +94,7 @@ def get_user_data(user, timing, tmin = -.2, tmax = .7, l_freq = 1., h_freq = 50.
     u = with_timing(user, timing)
     u_dat = set_montage(load_eeg(user, "../data/EEG"))
     u_dat.filter(l_freq, h_freq, h_trans_bandwidth='auto', filter_length='auto', phase = 'zero')
+    u_dat.notch_filter([50], filter_length = 'auto', phase = 'zero')
     events = make_all_events(u, targets)
     encoding = {"target": 1, "not-target": 2}
     epochs = mne.Epochs(u_dat, events, encoding, tmin, tmax, preload = True)
