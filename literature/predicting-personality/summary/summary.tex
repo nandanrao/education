@@ -1,0 +1,58 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{mathtools,amsfonts,amssymb,amsmath, bm,commath,multicol}
+\usepackage{algorithmicx, tkz-graph, algorithm, fancyhdr, pgfplots}
+\usepackage{fancyvrb, amsthm, csquotes, booktabs}
+\usepackage[backend=biber, citestyle=authoryear]{biblatex}
+\addbibresource{summary.bib}
+
+\usepackage[noend]{algpseudocode}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Nandan Rao}
+\lhead{Summary of Personality Prediction Literature}
+\rfoot{\thepage}
+
+\begin{document}
+
+A quick summary of several papers within the computer science and psychology literature to answer the following questions:
+
+\begin{enumerate}
+
+\item How do we measure the accuracy of the prediction (what objective function is to be used).
+
+\item How good does the prediction have to be before it's a test?
+
+\end{enumerate}
+
+\section{Objective Functions}
+
+The papers here which predict personality traits fall into two primary categories: predicting personality from samples of written language, and on the other side, predicting personality from usage of devices or networks.
+
+Two papers on language both use Pearson Correlations, \cite{Arnoux2017} and \cite{Schwartz2013}, which they use with an explicit explanation that personality is a continuous value, and report correlation scores between 0.25 - 0.42 on large sample sizes (1300 and 75000) culled from users of social media. Another paper using language, \cite{Mairesse2006} claims that personality should be treated as an ordinal value, and as such uses rank error, which they minimize to between .26-.39 (where 0.5 is random) on a much smaller sample of participants (96).
+
+The papers on device usage vary in their approach, \cite{Saati2005} uses Spearman's correlations (a correlation that considers rank explicitly), on 30 traits/subtraits with 16 participants and correlations of .46-.73. \cite{Khan2008} uses Pearson correlations, on 30 traits/subtraits with 26 participants and reported correlations between .4 and .6, and finally \cite{DeOliveira2011} uses MSE, which can easily be translated to and interpreted as Pearson correlations at which point they range between .55 - .66 for 5 traits with 39 participants. The first two papers are more or less useless from their tiny sample size compared to the number of features they measured without proper corrections for multiple testing. The numbers from \cite{DeOliveira2011} are slightly more interesting, and the correlations are extremely high. It is worth noting that to achieve this they use both mobile phone usage and social network analysis on the users mobile network data.
+
+The clear divide is between treating this as a rank or continuous-value problem, which somewhat has to do with the accuracy of the test in placing individuals on a score that is representative and can be compared to different populations (in which case it is a continuous-value problem), versus seeing the test as an activity performed within a certain context that can only be compared within that context (in which case it could make more sense to consider this as a rank problem). In any case, an easy recommendation at this stage is to continue to consider both and assess the sensitivity of all prediction tasks to these two classes of error formulations.
+
+\section{How Good is Good}
+
+This subject is really only addressed in the two social-media language processing papers, \cite{Arnoux2017} was the foundation of IBM's Personality Insights, while \cite{Schwartz2013} was highly referenced as the ``previous state of the art'' by the former, and for that reason they went with the same error measurement and consider their performance ``good.''
+
+\cite{Schwartz2013} references two texts from the psychology literature in order to justify their correlation scores as being ``close to as good as possible''. These two texts, \cite{Roberts2007} and \cite{Meyer2001} are both meta-analyses of dozens of psychology studies. They report that correlations between personality traits and behavior never exceed the 0.3-0.4 range. Another interesting fact that \cite{Meyer2001} reports is that correlations between self-reported behavioral problems (not traits specifically) have a similar relatively low level of correlation with reports of behavioral problems by experts or family members.
+
+While \cite{Schwartz2013} introduces this lack of strong correlation between psychology traits and behavior as an upper-limit to how well prediction could be accomplished, this does not necessarily apply to our case, as we not looking at correlations with real-world outcomes but rather correlations with constructed tests. It should, however, be taken seriously into account as we consider different possible ways in which we gather data. If correlations for real-world behavior never seem to go beyond 0.40 at best, then we would hardly expect, from any single source of data of natural behavior, to get much better than that.
+
+Clearly, it is important to consider the accuracy of our ``ground truth.''. The lack of correlation between self-reports and other forms of psychological tests in \cite{Meyer2001} should be investigated more closely in terms of personality traits specifically. Correctly measuring the variance or uncertainty in our measure of this ground truth is necessary in order to decide if a proxy is ``good enough.''
+
+In many of these papers, the validity of the ground truth, the big five personality test that is administered, is not explored beyond reporting the Cronbach's alpha on their test results and claiming the alpha is ``high'' (in these cases, .8 - .95), and then going on to treat the score as a true value, rather than a random variable of any sort.
+
+Cronbach's alpha, primarily used in this context of psychology tests, is simply a way to compare the variance of a trait to the variance of the individual survey questions that go into the trait. The idea is that if there is high variance in the questions that go into a trait, that trait is less accurately measured.
+
+This idea can be extended in a number of ways in our circumstances, assuming the underlying logic is sound. For example, we can look at the within-trait variance per-student as a measure of uncertainty for a certain students score in a given trait. Such an idea naturally gives rise to a maximum-likelihood formulation where the variance of the noise expected for each prediction is based on the variance of a student's responses. Naturally this destroys the simplicity of measuring correlations for an objective, which assumes, like $R^2$, identical noise assumptions for every observation, but opens up ways for us to formally consider the uncertainty in our ground truth.
+
+Even without such an approach, it is worth exploring ways in which we can use Cronbach's alpha as a measure of uncertainty in our ground truth, and how that leads to an answer to the question: ``how good is good?''
+
+\printbibliography
+\end{document}

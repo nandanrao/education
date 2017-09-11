@@ -1,0 +1,497 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global/}
+    \entry{Arnoux2017}{article}{}
+      \name{author}{6}{}{%
+        {{uniquename=0,hash=9767b90bf47cd847c26f07a362e0ee0b}{%
+           family={Arnoux},
+           familyi={A\bibinitperiod},
+           given={Pierre-Hadrien},
+           giveni={P\bibinithyphendelim H\bibinitperiod}}}%
+        {{uniquename=0,hash=4ef308e730f30ef4c1ffa80a03cf9d91}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Anbang},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=0313ff28ef454afd3f42659ba99923df}{%
+           family={Boyette},
+           familyi={B\bibinitperiod},
+           given={Neil},
+           giveni={N\bibinitperiod}}}%
+        {{uniquename=0,hash=b10cd5dd84e72f7d6ea46e39fa437624}{%
+           family={Mahmud},
+           familyi={M\bibinitperiod},
+           given={Jalal},
+           giveni={J\bibinitperiod}}}%
+        {{uniquename=0,hash=70df80c994c3f53c861927b7c14d086e}{%
+           family={Akkiraju},
+           familyi={A\bibinitperiod},
+           given={Rama},
+           giveni={R\bibinitperiod}}}%
+        {{uniquename=0,hash=8b1a09a7317974c9d250ddec2a9563f4}{%
+           family={Sinha},
+           familyi={S\bibinitperiod},
+           given={Vibha},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{bbdd665267ec2171d615305afcee2cbc}
+      \strng{fullhash}{f8bb8a2ff735fd1f84283bf889b03fad}
+      \strng{authornamehash}{bbdd665267ec2171d615305afcee2cbc}
+      \strng{authorfullhash}{f8bb8a2ff735fd1f84283bf889b03fad}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Predicting personality is essential for social applications supporting human-centered activities, yet prior modeling methods with users written text require too much input data to be realistically used in the context of social media. In this work, we aim to drastically reduce the data requirement for personality modeling and develop a model that is applicable to most users on Twitter. Our model integrates Word Embedding features with Gaussian Processes regression. Based on the evaluation of over 1.3K users on Twitter, we find that our model achieves comparable or better accuracy than state of the art techniques with 8 times fewer data.}
+      \field{annotation}{Word Embeddings + Gaussian Process Regression --{>} Absolute Error.}
+      \field{eprinttype}{arXiv}
+      \field{title}{{25 Tweets to Know You: A New Model to Predict Personality with Social Media}}
+      \field{year}{2017}
+      \field{pages}{25\bibrangedash 28}
+      \range{pages}{4}
+      \verb{eprint}
+      \verb 1704.05513
+      \endverb
+      \verb{file}
+      \verb :Users/nandanrao/Documents/BGSE/education-material/predicting-personality/25-tweets.pdf:pdf
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/ftp/arxiv/papers/1704/1704.05513.pdf%7B%5C%%7D5Cnhttp://arxiv.org/abs/1704.05513
+      \endverb
+    \endentry
+    \entry{Khan2008}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=2d4bd638d0f25a0b5b8cd6aea654658c}{%
+           family={Khan},
+           familyi={K\bibinitperiod},
+           given={Iftikhar\bibnamedelima Ahmed},
+           giveni={I\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{uniquename=0,hash=3bb633287cecf681d819816ca270daf8}{%
+           family={Brinkman},
+           familyi={B\bibinitperiod},
+           given={Willem-Paul},
+           giveni={W\bibinithyphendelim P\bibinitperiod}}}%
+        {{uniquename=0,hash=bb84f2d36c3848b9bbb75f888fd2898b}{%
+           family={Fine},
+           familyi={F\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod}}}%
+        {{uniquename=0,hash=88aeda96682f15295db4877b4584a57c}{%
+           family={Hierons},
+           familyi={H\bibinitperiod},
+           given={Robert\bibnamedelima M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{849b16d6a478d9680876c92a5db22d33}
+      \strng{fullhash}{e83de2a907a5985d21dd8380e93b76c9}
+      \strng{authornamehash}{849b16d6a478d9680876c92a5db22d33}
+      \strng{authorfullhash}{e83de2a907a5985d21dd8380e93b76c9}
+      \field{sortinit}{K}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781605583990}
+      \field{journaltitle}{Proceedings of the 15th European conference on Cognitive ergonomics the ergonomics of cool interaction - ECCE '08}
+      \field{number}{July 2017}
+      \field{title}{{Measuring personality from keyboard and mouse use}}
+      \field{year}{2008}
+      \field{pages}{1}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1145/1473018.1473066
+      \endverb
+      \verb{file}
+      \verb :Users/nandanrao/Documents/BGSE/education-material/predicting-personality/personality-from-keyboard-use.pdf:pdf
+      \endverb
+      \verb{url}
+      \verb http://portal.acm.org/citation.cfm?doid=1473018.1473066
+      \endverb
+      \keyw{from their use of,keyboard and mouse,motivation,personality,research approach,to measure computer users,two explorative studies were}
+    \endentry
+    \entry{Mairesse2006}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=b1145e45ea2a026e61c426b4ce9f0f52}{%
+           family={Mairesse},
+           familyi={M\bibinitperiod},
+           given={Fran\c{c}ois},
+           giveni={F\bibinitperiod}}}%
+        {{uniquename=0,hash=aa356f21c438923f0637286cd34f9676}{%
+           family={Walker},
+           familyi={W\bibinitperiod},
+           given={Marilyn\bibnamedelima a.},
+           giveni={M\bibinitperiod\bibinitdelim a\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c11cecb17ef10e07f5e81b8de206701}
+      \strng{fullhash}{9c11cecb17ef10e07f5e81b8de206701}
+      \strng{authornamehash}{9c11cecb17ef10e07f5e81b8de206701}
+      \strng{authorfullhash}{9c11cecb17ef10e07f5e81b8de206701}
+      \field{sortinit}{M}
+      \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The identification of personality by automatic analysis of conversation has many applications in natural language processing, from leader identification in meetings to partner matching on dating websites. We automatically train models of the main five personality dimensions, on a corpus of conversation extracts and personality ratings. Results show that the models perform better than the baseline, and their analysis confirms previous findings linking language and personality, while revealing many new linguistic and prosodic markers.}
+      \field{annotation}{Start initially by stating that "we formulate personality recognition as a ranking problem". RankBoost to train model (cereated by the AdaBoost folk). Error reported is "ranking error", which is 0.5 on a random baseline.}
+      \field{issn}{0749596X}
+      \field{journaltitle}{Proceedings of the Human Language Technology Conference of the NAACL}
+      \field{number}{June}
+      \field{title}{{Automatic recognition of personality in conversation}}
+      \field{year}{2006}
+      \field{pages}{85\bibrangedash 88}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.3115/1614049.1614071
+      \endverb
+      \verb{file}
+      \verb :Users/nandanrao/Documents/BGSE/education-material/predicting-personality/personality-from-conversation.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Meyer2001}{article}{}
+      \name{author}{9}{}{%
+        {{uniquename=0,hash=bcb171db7df82241bfb1c030ffd6ad88}{%
+           family={Meyer},
+           familyi={M\bibinitperiod},
+           given={Gj},
+           giveni={G\bibinitperiod}}}%
+        {{uniquename=0,hash=6fd085ea029ddf91f200cebe1793192c}{%
+           family={Finn},
+           familyi={F\bibinitperiod},
+           given={Se},
+           giveni={S\bibinitperiod}}}%
+        {{uniquename=0,hash=b7fff4f356975cd76a0956c0d4f09fe1}{%
+           family={Eyde},
+           familyi={E\bibinitperiod},
+           given={Ld},
+           giveni={L\bibinitperiod}}}%
+        {{uniquename=0,hash=aca78c4764712b37cba255f8f9a18a8c}{%
+           family={Kay},
+           familyi={K\bibinitperiod},
+           given={Gg},
+           giveni={G\bibinitperiod}}}%
+        {{uniquename=0,hash=ab6b9074aec11eddbf1feac8de1945fd}{%
+           family={Moreland},
+           familyi={M\bibinitperiod},
+           given={Kl},
+           giveni={K\bibinitperiod}}}%
+        {{uniquename=0,hash=59019b07986bb462575e88d29477de02}{%
+           family={Dies},
+           familyi={D\bibinitperiod},
+           given={Rr},
+           giveni={R\bibinitperiod}}}%
+        {{uniquename=0,hash=a55aa82d1b22488b0a8ce7ef0af0bc52}{%
+           family={Eisman},
+           familyi={E\bibinitperiod},
+           given={Ej},
+           giveni={E\bibinitperiod}}}%
+        {{uniquename=0,hash=53024ce8d107cf6e3b0a563e687b038b}{%
+           family={Kubiszyn},
+           familyi={K\bibinitperiod},
+           given={Tw},
+           giveni={T\bibinitperiod}}}%
+        {{uniquename=0,hash=65999ed8ddbde25b09dfd7e5b782407a}{%
+           family={Reed},
+           familyi={R\bibinitperiod},
+           given={Gm},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{06c4f15c29109b98bc6b136c237104e2}
+      \strng{fullhash}{31fb214b2265903a5c9d8e02f84c2a48}
+      \strng{authornamehash}{06c4f15c29109b98bc6b136c237104e2}
+      \strng{authorfullhash}{31fb214b2265903a5c9d8e02f84c2a48}
+      \field{sortinit}{M}
+      \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This article summarizes evidence and issues associated with psychological assessment. Data from more than 125 meta-analyses on test validity and 800 samples examining multimethod assessment suggest 4 general conclusions: (a) Psychological test validity is strong and compelling, (b) psychological test validity is comparable to medical test validity, (c) distinct assessment methods provide unique sources of information, and (d) clinicians who rely exclusively on interviews are prone to incomplete understandings. Following principles for optimal nomothetic research, the authors suggest that a multimethod assessment battery provides a structured means for skilled clinicians to maximize the validity of individualized assessments. Future investigations should move beyond an examination of test scales to focus more on the role of psychologists who use tests as helpful tools to furnish patients and referral sources with professional consultation. (PsycINFO Database Record (c) 2012 APA, all rights reserved)}
+      \field{isbn}{0003-066X}
+      \field{issn}{0003-066X}
+      \field{journaltitle}{American Psychologist Copyright}
+      \field{number}{2}
+      \field{title}{{Psychological Testing and Psychological Assessment}}
+      \field{volume}{56}
+      \field{year}{2001}
+      \field{pages}{128\bibrangedash 165}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.1037//OOO3-O66X.56.2.128
+      \endverb
+      \verb{file}
+      \verb :Users/nandanrao/Documents/BGSE/education-material/predicting-personality/pyschological-testing-and-assessment.pdf:pdf
+      \endverb
+      \verb{url}
+      \verb http://psych.colorado.edu/%7B~%7Dwillcutt/pdfs/Meyer%7B%5C_%7D2001.pdf
+      \endverb
+    \endentry
+    \entry{DeOliveira2011}{article}{}
+      \name{author}{6}{}{%
+        {{uniquename=0,hash=17550bf30850154f1c5b2bdb8c2fca38}{%
+           family={Oliveira},
+           familyi={O\bibinitperiod},
+           given={Rodrigo},
+           giveni={R\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{uniquename=0,hash=34b0daf756776ac58e5af9a2b2cdb9ee}{%
+           family={Karatzoglou},
+           familyi={K\bibinitperiod},
+           given={Alexandros},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=8d9e8ce16b0ea1fe5594e3fb5dfdcf2a}{%
+           family={{Concejero Cerezo}},
+           familyi={C\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+        {{uniquename=0,hash=d2789a5502a0e91a708983d1fed90e74}{%
+           family={{Armenta Lopez de Vicu\~{n}a}},
+           familyi={A\bibinitperiod},
+           given={Ana},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=6befa50d1bad159fffc14e56262c94b2}{%
+           family={Oliver},
+           familyi={O\bibinitperiod},
+           given={Nuria},
+           giveni={N\bibinitperiod}}}%
+        {{uniquename=0,hash=5c0d03c09883c3e87c1307bf43bb248f}{%
+           family={Oliveira},
+           familyi={O\bibinitperiod},
+           given={R},
+           giveni={R\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{825d17c85770dc6aa4b65cd5ac80af90}
+      \strng{fullhash}{bc79f8e8a5d24c54ac175d3acbdd6430}
+      \strng{authornamehash}{825d17c85770dc6aa4b65cd5ac80af90}
+      \strng{authorfullhash}{bc79f8e8a5d24c54ac175d3acbdd6430}
+      \field{sortinit}{O}
+      \field{sortinithash}{f5d80ef71b5b58852663ecfd775b175a}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Knowing the users' personality can be a strategic advantage for the design of adaptive and personalized user interfaces. In this paper, we present the results of a first trial conducted with the aim of inferring people's personality traits based on their mobile phone call behavior. Initial findings corroborate the efficacy of using call detail records (CDR) and Social Network Analysis (SNA) of the call graph to infer the Big Five personality factors. On-going work includes a large-scale study that shall refine the accuracy of the models with a reduced margin of error.}
+      \field{annotation}{SVM Recursive Feature Elimination to select features followed by SVM regression w/ Gaussian kernel, cross validated with MSE. Features related to call usage and social network analysis of the users. Selected features were number of calls, duration of calls, and messages sent/recieved at different times of day, number of contacts, number of strong contacts. MSE of regression is compared to MSE of the mean for each trait. They claim the results are satissfactory, although it's unclear what makes them so. All target traits have a MSE improvement of less than 50{\%} over the mean.}
+      \field{isbn}{978-1-4503-0268-5}
+      \field{journaltitle}{CHI'11 Extended {\ldots}}
+      \field{title}{{Towards a psychographic user model from mobile phone usage}}
+      \field{year}{2011}
+      \field{pages}{2191\bibrangedash 2196}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/1979742.1979920
+      \endverb
+      \verb{file}
+      \verb :Users/nandanrao/Documents/BGSE/education-material/predicting-personality/mobile-phone-usage.pdf:pdf
+      \endverb
+      \verb{url}
+      \verb http://doi.acm.org/10.1145/1979742.1979920%7B%5C%%7D5Cnhttp://dl.acm.org/ft%7B%5C_%7Dgateway.cfm?id=1979920%7B%5C&%7Dtype=pdf%7B%5C%%7D5Cnhttp://dl.acm.org/citation.cfm?id=1979920
+      \endverb
+      \keyw{acm classification keywords,big five,call detail,five factor model,personality,psychographics,record,user modeling}
+    \endentry
+    \entry{Roberts2007}{article}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,hash=85c744a37469b71abe0b228a10dfecdd}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Brent\bibnamedelima W.},
+           giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{uniquename=0,hash=1145c442065ba1eebf0798517caabd20}{%
+           family={Kuncel},
+           familyi={K\bibinitperiod},
+           given={Nathan\bibnamedelima R.},
+           giveni={N\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{uniquename=0,hash=dada71c2a58c060b53b7c8e76521fe24}{%
+           family={Shiner},
+           familyi={S\bibinitperiod},
+           given={Rebecca},
+           giveni={R\bibinitperiod}}}%
+        {{uniquename=0,hash=c0730e18d502c1ace24d25af70b7f6c2}{%
+           family={Caspi},
+           familyi={C\bibinitperiod},
+           given={Avshalom},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=fd2fd8a0686ebb45ebd4c69eba6e20c8}{%
+           family={Goldberg},
+           familyi={G\bibinitperiod},
+           given={Lewis\bibnamedelima R.},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{7a3f8574dfc4884f40558dfec0466eff}
+      \strng{fullhash}{0cbfe34bb3a22461f48775f659ba9695}
+      \strng{authornamehash}{7a3f8574dfc4884f40558dfec0466eff}
+      \strng{authorfullhash}{0cbfe34bb3a22461f48775f659ba9695}
+      \field{sortinit}{R}
+      \field{sortinithash}{c15bc8eb6936bc6b3c8baa9e8575af53}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The ability of personality traits to predict important life outcomes has traditionally been questioned because of the putative small effects of personality. In this article, we compare the predictive validity of personality traits with that of socioeconomic status (SES) and cognitive ability to test the relative contribution of personality traits to predictions of three critical outcomes: mortality, divorce, and occupational attainment. Only evidence from prospective longitudinal studies was considered. In addition, an attempt was made to limit the review to studies that controlled for important background factors. Results showed that the magnitude of the effects of personality traits on mortality, divorce, and occupational attainment was indistinguishable from the effects of SES and cognitive ability on these outcomes. These results demonstrate the influence of personality traits on important life outcomes, highlight the need to more routinely incorporate measures of personality into quality of life surv...}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{17456916}
+      \field{issn}{17456924}
+      \field{journaltitle}{Perspectives on Psychological Science}
+      \field{number}{4}
+      \field{title}{{The Power of Personality: The Comparative Validity of Personality Traits, Socioeconomic Status, and Cognitive Ability for Predicting Important Life Outcomes}}
+      \field{volume}{2}
+      \field{year}{2007}
+      \field{pages}{313\bibrangedash 345}
+      \range{pages}{33}
+      \verb{doi}
+      \verb 10.1111/j.1745-6916.2007.00047.x
+      \endverb
+      \verb{eprint}
+      \verb 15334406
+      \endverb
+      \verb{file}
+      \verb :Users/nandanrao/Documents/BGSE/education-material/predicting-personality/predicting-life-outcomes.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Saati2005}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=b0043b34000233de19dc19ae9a808c83}{%
+           family={Saati},
+           familyi={S\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{uniquename=0,hash=6b421bfd95d55a9d8ac5256fb95ccac0}{%
+           family={Salem},
+           familyi={S\bibinitperiod},
+           given={May},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=3bb633287cecf681d819816ca270daf8}{%
+           family={Brinkman},
+           familyi={B\bibinitperiod},
+           given={Willem-Paul},
+           giveni={W\bibinithyphendelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{a9cd105494825475e7aa79fd8e693926}
+      \strng{fullhash}{a9cd105494825475e7aa79fd8e693926}
+      \strng{authornamehash}{a9cd105494825475e7aa79fd8e693926}
+      \strng{authorfullhash}{a9cd105494825475e7aa79fd8e693926}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Skinning technology allows applications to have multiple appearances, giving designers the ability to customize a user interface for specific user groups. For effective customisation, designers need to (i) segment their user population, and (ii) understand the relationship between the segmentation and the dimensions in which an application can be skinned. This paper presents two exploratory pilot studies that focus on user personality as a way to segment a user group, and colour as a skinning dimension. Instead of the traditional questionnaire style personality inventories, the study looks at user interaction behaviour as a way to determine the user personality. In the first study, 16 participants were asked to use an application for 5 days and to complete the IPIP-NEO personality inventories. Analysis of the recorded interaction behaviour and the participants' personality, revealed significant correlations between behavioural measures such as time between two consecutive user actions, or the number of user actions made, and personality traits such as extraversion, and conscientiousness. A second pilot study asked 20 participants also to complete the personality inventory and to indicate their preferences for 5 colour-skins of two applications. The results revealed significant correlations between personality traits and skin colour such as blue and extraversion, but also between black and imagination. These early findings suggest that designers could develop customized skins based on users' behaviour.}
+      \field{journaltitle}{Hci 2005}
+      \field{title}{{Towards customized user interface skins: investigating user personality and skin colour}}
+      \field{volume}{2}
+      \field{year}{2005}
+      \field{pages}{86\bibrangedash 93}
+      \range{pages}{8}
+      \verb{file}
+      \verb :Users/nandanrao/Library/Application Support/Mendeley Desktop/Downloaded/Saati, Salem, Brinkman - 2005 - Towards customized user interface skins investigating user personality and skin colour.pdf:pdf
+      \endverb
+      \keyw{Skinning,and colour.,customisation,interaction behaviour,personality}
+    \endentry
+    \entry{Schwartz2013}{article}{}
+      \name{author}{11}{}{%
+        {{uniquename=0,hash=3f0587ad01abcd2c846a7f8d82e6c78e}{%
+           family={Schwartz},
+           familyi={S\bibinitperiod},
+           given={H.\bibnamedelimi Andrew},
+           giveni={H\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{uniquename=0,hash=939d25745cdd27e8c49a55370fafb281}{%
+           family={Eichstaedt},
+           familyi={E\bibinitperiod},
+           given={Johannes\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{uniquename=0,hash=19c9a76aa8c8da39c10989c410d9a914}{%
+           family={Kern},
+           familyi={K\bibinitperiod},
+           given={Margaret\bibnamedelima L.},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{uniquename=0,hash=65f8d6e80e9217fcc2fa4b382144e7b6}{%
+           family={Dziurzynski},
+           familyi={D\bibinitperiod},
+           given={Lukasz},
+           giveni={L\bibinitperiod}}}%
+        {{uniquename=0,hash=5cf82c9ffcfce7234752cb19e3f76da5}{%
+           family={Ramones},
+           familyi={R\bibinitperiod},
+           given={Stephanie\bibnamedelima M.},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{uniquename=0,hash=431159afd903b7d5fccfe14200134775}{%
+           family={Agrawal},
+           familyi={A\bibinitperiod},
+           given={Megha},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=8b8c8c787a7f1643db55453fa5554150}{%
+           family={Shah},
+           familyi={S\bibinitperiod},
+           given={Achal},
+           giveni={A\bibinitperiod}}}%
+        {{uniquename=0,hash=0d3b7097a65959fe325e6cc5f3dd4f72}{%
+           family={Kosinski},
+           familyi={K\bibinitperiod},
+           given={Michal},
+           giveni={M\bibinitperiod}}}%
+        {{uniquename=0,hash=f7cd369c660d91ff39e60bbf5e0a5b88}{%
+           family={Stillwell},
+           familyi={S\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{uniquename=0,hash=397e06584b712e72b723dee660598277}{%
+           family={Seligman},
+           familyi={S\bibinitperiod},
+           given={Martin\bibnamedelima E.P.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{uniquename=0,hash=b0e46d1e051be9de0f81c44ade4acbf6}{%
+           family={Ungar},
+           familyi={U\bibinitperiod},
+           given={Lyle\bibnamedelima H.},
+           giveni={L\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{79ab848a4c4852b1d04bccc6ed715570}
+      \strng{fullhash}{813568bcaa0e35269e356f3e71eec65b}
+      \strng{authornamehash}{79ab848a4c4852b1d04bccc6ed715570}
+      \strng{authorfullhash}{813568bcaa0e35269e356f3e71eec65b}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We analyzed 700 million words, phrases, and topic instances collected from the Facebook messages of 75,000 volunteers, who also took standard personality tests, and found striking variations in language with personality, gender, and age. In our open-vocabulary technique, the data itself drives a comprehensive exploration of language that distinguishes people, finding connections that are not captured with traditional closed-vocabulary word-category analyses. Our analyses shed new light on psychosocial processes yielding results that are face valid (e.g., subjects living in high elevations talk about the mountains), tie in with other research (e.g., neurotic people disproportionately use the phrase 'sick of' and the word 'depressed'), suggest new hypotheses (e.g., an active life implies emotional stability), and give detailed insights (males use the possessive 'my' when mentioning their 'wife' or 'girlfriend' more often than females use 'my' with 'husband' or 'boyfriend'). To date, this represents the largest study, by an order of magnitude, of language and personality.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1932-6203}
+      \field{issn}{19326203}
+      \field{journaltitle}{PLoS ONE}
+      \field{number}{9}
+      \field{title}{{Personality, Gender, and Age in the Language of Social Media: The Open-Vocabulary Approach}}
+      \field{volume}{8}
+      \field{year}{2013}
+      \verb{doi}
+      \verb 10.1371/journal.pone.0073791
+      \endverb
+      \verb{eprint}
+      \verb 1690219.1690245\x{fffd}\x{fffd}\x{fffd}
+      \endverb
+      \verb{file}
+      \verb :Users/nandanrao/Documents/BGSE/education-material/predicting-personality/personality-gender-and-age.pdf:pdf
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

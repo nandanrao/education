@@ -1,0 +1,22 @@
+[0] Config.pm:354> INFO - This is Biber 2.7
+[0] Config.pm:357> INFO - Logfile is 'summary.blg'
+[74] biber-darwin:303> INFO - === Sun Aug  6, 2017, 16:18:13
+[120] Biber.pm:359> INFO - Reading 'summary.bcf'
+[235] Biber.pm:835> INFO - Found 8 citekeys in bib section 0
+[252] Biber.pm:3670> INFO - Processing section 0
+[278] Biber.pm:3840> INFO - Looking for bibtex format file 'summary.bib' for section 0
+[284] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
+[300] bibtex.pm:1292> INFO - Found BibTeX data source 'summary.bib'
+[353] Utils.pm:164> WARN - ISBN '1932-6203' in entry 'Schwartz2013' is invalid - run biber with '--validate_datamodel' for details.
+[374] Utils.pm:164> WARN - ISBN '17456916' in entry 'Roberts2007' is invalid - run biber with '--validate_datamodel' for details.
+[377] Utils.pm:164> WARN - ISBN '0003-066X' in entry 'Meyer2001' is invalid - run biber with '--validate_datamodel' for details.
+[450] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[451] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[451] Biber.pm:3499> INFO - Sorting list 'nty/global/' of type 'entry' with scheme 'nty' and locale 'en-US'
+[451] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[465] bbl.pm:608> INFO - Writing 'summary.bbl' with encoding 'ascii'
+[470] Utils.pm:164> WARN - The entry 'Mairesse2006' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[473] Utils.pm:164> WARN - The entry 'DeOliveira2011' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[477] Utils.pm:164> WARN - The entry 'Schwartz2013' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[477] bbl.pm:712> INFO - Output to summary.bbl
+[505] Biber.pm:109> INFO - WARNINGS: 6
