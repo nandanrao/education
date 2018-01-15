@@ -103,7 +103,8 @@ def get_user_data(user, timing,  eeg_data_folder, tmin = -.2, tmax = .7, l_freq 
         return events
 
     # For calculating epochs we need events as numpy in array
-    events = events.astype("int")
+    # drop column "target" with test type
+    events = events[:,:3].astype("int")
     u_dat = set_montage(load_eeg(user, eeg_data_folder))
     u_dat.filter(l_freq, h_freq, h_trans_bandwidth='auto', filter_length='auto', phase = 'zero')
     u_dat.notch_filter([50], filter_length = 'auto', phase = 'zero')
