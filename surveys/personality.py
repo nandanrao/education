@@ -9,7 +9,7 @@ from sklearn.preprocessing import scale, normalize
 from sklearn.metrics.pairwise import pairwise_distances
 from sklearn.linear_model import Lasso, ElasticNet
 from scipy import stats
-from bokeh.charts import Scatter
+from functools import reduce
 
 # do we still want this??
 def viz_students(m, selected):
@@ -29,7 +29,7 @@ def get_question_num(s, q):
 def read_df(group, q, folder):
     f = group + '_1612_q' + str(q) + '.csv'
     p = path.join(folder, "educatalyst/Data/Raw/1612_jesuites", f)
-    return (pd.read_csv(p)
+    return (pd.read_csv(p, encoding='ISO-8859-1')
             .drop(['End date', 'Start date', 'Duration'], 1) # Put these back?
             .rename(columns = lambda c: get_question_num(c, q)))
 

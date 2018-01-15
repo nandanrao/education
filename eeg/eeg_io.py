@@ -3,7 +3,7 @@ import numpy as np
 import mne.io
 from os import path, listdir
 from fnmatch import fnmatch
-
+from functools import reduce
 
 def load_eeg(subject, directory = "EEG"):
     """ Load EEG data, filter 1-50Hz, drops useless channels """
@@ -31,7 +31,7 @@ def read_pres_file(subject, ext, header, rm = None, sep = '\t', pres = "../eeg_t
     """
     f = get_file(pres, subject+ext)
     if not f:
-        raise Exception("could not find that file!")
+        raise OSError("could not find that file!")
     df = pd.read_csv(f, sep=sep, header=header)
     return df[df[rm] == subject] if rm else df
 
@@ -55,10 +55,14 @@ def with_timing(subject, timing):
                  ("stroop-log", "Stroop1 Practice")]
     logs = read_raw(subject)
     time = timing[timing["File Prefix"] == subject]
-    for a in to_adjust:
-        df = logs[a[0]]
+    for test,col in to_adjust:
+        df = logs[test]
         df["Time"] = pd.to_numeric(df["Time"])
-        logs[a[0]] = adjust_timing(df, time[a[1]].values[0], time["EEG Start"].values[0])
+        try:
+            logs[test] = adjust_timing(df, time[col].values[0], time["EEG Start"].values[0])
+        except ValueError as e:
+            print('ValueError while adjusting timing: ', e, 'This test will be lost: ', test, 'From user: ', subject)
+            logs[test] = None
     return logs
 
 # two-back and three-back --> letter not important, picture_not_target, picture target, response
@@ -71,31 +75,38 @@ def encode_test(df):
         # Stroop test -- drop Practice??? Included now...
         mapping = {"Incongruent": 1, "Neutral":2 }
         series = df['trial_cond(str)'].dropna()
-        print series.size
+        print(series.size)
     return series.map(lambda x: mapping[x])
 
-def make_event_df(df):
+def make_event_df(df, k):
+    if df is None:
+        return pd.DataFrame([])
     return pd.DataFrame({"a": df.sample_num,
                          "b": np.zeros(len(df)),
-                         "event_id": encode_test(df)})
+                         "event_id": encode_test(df),
+                         "target": k})
 
 def make_all_events(raw, targets):
     concat = lambda a,b: pd.concat([a,b])
-    df = reduce(concat, map(lambda k: make_event_df(raw[k]), targets))
-    print df.size
-    return df.as_matrix().astype("int")
+    df = reduce(concat, map(lambda k: make_event_df(raw[k], k), targets))
+    return df.as_matrix()
 
 def set_montage(u_dat):
     montage = mne.channels.read_montage('easycap-M10')
     u_dat.set_montage(montage)
     return u_dat
 
-def get_user_data(user, timing, tmin = -.2, tmax = .7, l_freq = 1., h_freq = 50., targets = ["two-back", "three-back"]):
+def get_user_data(user, timing,  eeg_data_folder, tmin = -.2, tmax = .7, l_freq = 1., h_freq = 50., targets = ["two-back", "three-back"], events_only = False):
     u = with_timing(user, timing)
-    u_dat = set_montage(load_eeg(user, "../data/EEG"))
+    events = make_all_events(u, targets)
+    if events_only:
+        return events
+
+    # For calculating epochs we need events as numpy in array
+    events = events.astype("int")
+    u_dat = set_montage(load_eeg(user, eeg_data_folder))
     u_dat.filter(l_freq, h_freq, h_trans_bandwidth='auto', filter_length='auto', phase = 'zero')
     u_dat.notch_filter([50], filter_length = 'auto', phase = 'zero')
-    events = make_all_events(u, targets)
     encoding = {"target": 1, "not-target": 2}
     epochs = mne.Epochs(u_dat, events, encoding, tmin, tmax, preload = True)
     return u_dat, epochs, events
