@@ -1,9 +1,11 @@
+from __future__ import print_function
 import numpy as np
 from itertools import permutations
 from sklearn.decomposition import FactorAnalysis
 from factor_rotation._analytic_rotation import target_rotation
 from factor_rotation._gpa_rotation import orthomax_objective, GPA
 from sklearn.preprocessing import normalize
+
 # def score_rotation():
 #     return True
 
@@ -33,7 +35,7 @@ def get_best_rotation(A, H, get_rotation, score):
     Ls = [A.dot(T) for T in Ts] # ONLY FOR ORTHOGONAL!
     scores = np.array([score(L) for L in Ls])
     i = np.argmin(scores)
-    print "best rotation from permutation: " + str(i)
+    print("best rotation from permutation: " + str(i))
     return perms[i], Ts[i]
 
 class RotatableFA(FactorAnalysis):

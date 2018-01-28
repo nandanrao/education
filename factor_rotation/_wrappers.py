@@ -3,8 +3,8 @@
 from __future__ import division
 from __future__ import print_function
 
-import _gpa_rotation as gr
-import _analytic_rotation as ar
+import factor_rotation._gpa_rotation as gr
+import factor_rotation._analytic_rotation as ar
 import numpy as np
 import unittest
 
@@ -14,17 +14,17 @@ def rotate_factors(A, method, *method_args, **algorithm_kwargs):
     r"""
     Subroutine for orthogonal and oblique rotation of the matrix :math:`A`.
     For orthogonal rotations :math:`A` is rotated to :math:`L` according to
-    
+
     .. math::
         L =  AT,
-        
+
     where :math:`T` is an orthogonal matrix. And, for oblique rotations
     :math:`A` is rotated to :math:`L` according to
-    
+
     .. math::
         L =  A(T^*)^{-1},
     where :math:`T` is a normal matrix.
-    
+
     Methods
     -------
     What follows is a list of available methods. Depending on the method
@@ -33,20 +33,20 @@ def rotate_factors(A, method, *method_args, **algorithm_kwargs):
     passed to the selected algorithm (see the parameters section).
     Unless stated otherwise, only the gpa and
     gpa_der_free algorithm are available.
-    
+
     Below,
-    
+
     * :math:`L` is a :math:`p\times k` matrix;
     * :math:`N` is :math:`k\times k` matrix with zeros on the diagonal and ones elsewhere;
     * :math:`M` is :math:`p\times p` matrix with zeros on the diagonal and ones elsewhere;
     * :math:`C` is a :math:`p\times p` matrix with elements equal to :math:`1/p`;
     * :math:`(X,Y)=\operatorname{Tr}(X^*Y)` is the Frobenius norm;
     * :math:`\circ` is the element-wise product or Hadamard product.
-    
+
     oblimin : orthogonal or oblique rotation that minimizes
         .. math::
             \phi(L) = \frac{1}{4}(L\circ L,(I-\gamma C)(L\circ L)N).
-            
+
         For orthogonal rotations:
 
         * :math:`\gamma=0` corresponds to quartimax,
@@ -54,85 +54,85 @@ def rotate_factors(A, method, *method_args, **algorithm_kwargs):
         * :math:`\gamma=1` corresponds to varimax,
         * :math:`\gamma=\frac{1}{p}` corresponds to equamax.
         For oblique rotations rotations:
-    
+
         * :math:`\gamma=0` corresponds to quartimin,
         * :math:`\gamma=\frac{1}{2}` corresponds to biquartimin.
-        
+
         method_args:
-        
+
         gamma : float
             oblimin family parameter
         rotation_method : string
             should be one of {orthogonal, oblique}
-    
+
     orthomax : orthogonal rotation that minimizes
         .. math::
             \phi(L) = -\frac{1}{4}(L\circ L,(I-\gamma C)(L\circ L)),
-            
-        where :math:`0\leq\gamma\leq1`. The orthomax family is equivalent to 
+
+        where :math:`0\leq\gamma\leq1`. The orthomax family is equivalent to
         the oblimin family (when restricted to orthogonal rotations). Furthermore,
 
         * :math:`\gamma=0` corresponds to quartimax,
         * :math:`\gamma=\frac{1}{2}` corresponds to biquartimax,
         * :math:`\gamma=1` corresponds to varimax,
         * :math:`\gamma=\frac{1}{p}` corresponds to equamax.
-        
+
         method_args:
-        
+
         gamma : float (between 0 and 1)
             orthomax family parameter
-    
+
     CF : Crawford-Ferguson family for orthogonal and oblique rotation wich minimizes:
         .. math::
             \phi(L) =\frac{1-\kappa}{4} (L\circ L,(L\circ L)N)
                       -\frac{1}{4}(L\circ L,M(L\circ L)),
-                      
+
         where :math:`0\leq\kappa\leq1`. For orthogonal rotations the oblimin
         (and orthomax) family of rotations is equivalent to the Crawford-Ferguson family.
         To be more precise:
-    
+
         * :math:`\kappa=0` corresponds to quartimax,
         * :math:`\kappa=\frac{1}{p}` corresponds to varimax,
         * :math:`\kappa=\frac{k-1}{p+k-2}` corresponds to parsimax,
         * :math:`\kappa=1` corresponds to factor parsimony.
-        
+
         method_args:
-        
+
         kappa : float (between 0 and 1)
             Crawford-Ferguson family parameter
         rotation_method : string
             should be one of {orthogonal, oblique}
-    
+
     quartimax : orthogonal rotation method
         minimizes the orthomax objective with :math:`\gamma=0`
-        
+
     biquartimax : orthogonal rotation method
         minimizes the orthomax objective with :math:`\gamma=\frac{1}{2}`
-        
+
     varimax : orthogonal rotation method
         minimizes the orthomax objective with :math:`\gamma=1`
-        
+
     equamax : orthogonal rotation method
         minimizes the orthomax objective with :math:`\gamma=\frac{1}{p}`
-        
+
     parsimax : orthogonal rotation method
         minimizes the Crawford-Ferguson family objective with :math:`\kappa=\frac{k-1}{p+k-2}`
-        
+
     parsimony : orthogonal rotation method
         minimizes the Crawford-Ferguson family objective with :math:`\kappa=1`
-    
-    quartimin : oblique rotation method that minimizes
-        minimizes the oblimin objective with :math:`\gamma=0`      
 
     quartimin : oblique rotation method that minimizes
-        minimizes the oblimin objective with :math:`\gamma=\frac{1}{2}`   
-        
+        minimizes the oblimin objective with :math:`\gamma=0`
+
+    quartimin : oblique rotation method that minimizes
+        minimizes the oblimin objective with :math:`\gamma=\frac{1}{2}`
+
     target : orthogonal or oblique rotation that rotates towards a target matrix :math:`H` by minimizing the objective
         .. math::
             \phi(L) =\frac{1}{2}\|L-H\|^2.
-        
+
         method_args:
-        
+
         H : numpy matrix
             target matrix
         rotation_method : string
@@ -140,23 +140,23 @@ def rotate_factors(A, method, *method_args, **algorithm_kwargs):
 
         For orthogonal rotations the algorithm can be set to analytic in which case
         the following keyword arguments are available:
-        
+
         full_rank : boolean (default False)
-            if set to true full rank is assumed    
+            if set to true full rank is assumed
 
     partial_target : orthogonal (default) or oblique rotation that partially rotates
         towards a target matrix :math:`H` by minimizing the objective:
-        
+
         .. math::
             \phi(L) =\frac{1}{2}\|W\circ(L-H)\|^2.
-        
+
         method_args:
-        
+
         H : numpy matrix
             target matrix
         W : numpy matrix (default matrix with equal weight one for all entries)
             matrix with weights, entries can either be one or zero
-    
+
     Parameters
     ---------
     A : numpy matrix (default None)
@@ -168,27 +168,27 @@ def rotate_factors(A, method, *method_args, **algorithm_kwargs):
     algorithm_kwargs : dictionary
         algorithm : string (default gpa)
             should be one of:
-            
+
             * 'gpa': a numerical method
             * 'gpa_der_free': a derivative free numerical method
             * 'analytic' : an analytic method
         Depending on the algorithm, there are algorithm specific keyword
         arguments. For the gpa and gpa_der_free, the following
         keyword arguments are available:
-        
+
         max_tries : integer (default 501)
             maximum number of iterations
         tol : float
             stop criterion, algorithm stops if Frobenius norm of gradient is
             smaller then tol
         For analytic, the supporeted arguments depend on the method, see above.
-            
+
         See the lower level functions for more details.
-        
+
     Returns
     -------
     The tuple :math:`(L,T)`
-    
+
     Examples
     -------
     >>> A = np.random.randn(8,2)
@@ -267,9 +267,9 @@ def rotate_factors(A, method, *method_args, **algorithm_kwargs):
     elif method == 'equamax':
         return rotate_factors(A, 'orthomax', 1/p, **algorithm_kwargs)
     elif method == 'parsimax':
-        return rotate_factors(A, 'CF', (k-1)/(p+k-2), 'orthogonal', **algorithm_kwargs)    
+        return rotate_factors(A, 'CF', (k-1)/(p+k-2), 'orthogonal', **algorithm_kwargs)
     elif method == 'parsimony':
-        return rotate_factors(A, 'CF', 1, 'orthogonal', **algorithm_kwargs)    
+        return rotate_factors(A, 'CF', 1, 'orthogonal', **algorithm_kwargs)
     elif method == 'quartimin':
         return rotate_factors(A, 'oblimin', 0, 'oblique', **algorithm_kwargs)
     elif method == 'biquartimin':
@@ -311,13 +311,13 @@ def rotate_factors(A, method, *method_args, **algorithm_kwargs):
     return L, T
 
 class unittests(unittest.TestCase):
-    
-    @staticmethod    
+
+    @staticmethod
     def str2matrix(A):
         A=A.lstrip().rstrip().split('\n')
         A=np.array([row.split() for row in A]).astype(np.float)
         return A
-        
+
     def get_A(self):
         return self.str2matrix("""
          .830 -.396
@@ -329,7 +329,7 @@ class unittests(unittest.TestCase):
          .594  .444
          .647  .333
         """)
-        
+
     def get_H(self):
         return  self.str2matrix("""
           .8 -.3
@@ -354,16 +354,16 @@ class unittests(unittest.TestCase):
         1 0
         """)
 
-        
+
     def _test_template(self, method,*method_args, **algorithms):
         A=self.get_A()
         algorithm1= 'gpa' if not algorithms.has_key('algorithm1') else algorithms['algorithm1']
         algorithm2= 'gpa_der_free' if not algorithms.has_key('algorithm1') else algorithms['algorithm1']
-        L1, T1 = rotate_factors(A,method,*method_args, algorithm = algorithm1)        
+        L1, T1 = rotate_factors(A,method,*method_args, algorithm = algorithm1)
         L2, T2 = rotate_factors(A,method,*method_args, algorithm = algorithm2)
         self.assertTrue(np.allclose(L1, L2, atol=1e-5))
         self.assertTrue(np.allclose(T1, T2, atol=1e-5))
-    
+
     def test_methods(self):
         """
         Quartimax derivative free example
@@ -385,7 +385,7 @@ class unittests(unittest.TestCase):
             elif method == 'partial_target':
                 method_args=[self.get_H(), self.get_W()]
             self._test_template(method, *method_args)
-    
+
 if __name__ == '__main__': # run only if this file is run directly and not when imported
     run_unit_tests=True
     test_only = list() # if list is empty then test all
