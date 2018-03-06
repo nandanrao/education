@@ -8,6 +8,7 @@ def calc_success(series, metric):
             true_p, false_p = series[1], series[2]
             return true_p / (true_p + false_p)
         except KeyError:
+            # 1 is the correct target, 2 is false target
             return 1.0 if series.index[0] == 1 else 0.0
 
     if metric == 'recall':
@@ -22,15 +23,35 @@ def success_by_targets(counts, metric):
     d = [(t, calc_success(counts[t], metric)) for t in targets]
     return pd.DataFrame(d, columns = ['test', 'score'])
 
-def n_back_precision(df):
+def precision_df(df):
     predicted = df[df.code == 3]
     idx = predicted.index - 1
-    counts = (df[(df.index.isin(idx)) & (df.code != 3)]
-              .groupby(['test', 'code'])
-              .count()
-              .nothing)
 
-    return counts
+    # filter to only the non-repeat signals
+    targets = df[(df.index.isin(idx) & (df.code != 3))]
+    predicted = predicted[predicted.index.isin(targets.index + 1)]
+    resp_times, target_times = predicted.timestamp.values, targets.timestamp.values
+    times = (resp_times - target_times).astype(float)
+    return targets.assign(response_time = times)
+
+def n_back_response(df):
+    return (precision_df(df)
+            .groupby(['test', 'code'])
+            .response_time
+            .mean())
+
+def format_response_times(s):
+    naming = lambda x: 'avg_res_time_correct' if x == 1 else 'avg_res_time_wrong'
+    df = pd.DataFrame(s).reset_index()
+    return (df
+            .assign(code = df.code.map(naming))
+            .rename(columns={'response_time': 'score', 'code': 'metric'}))
+
+def n_back_precision(df):
+    return (precision_df(df)
+            .groupby(['test', 'code'])
+            .count()
+            .nothing)
 
 def n_back_recall(df):
     positives = df[df.code == 1]
@@ -44,18 +65,18 @@ def n_back_recall(df):
 
     return counts
 
-def n_back_get_scores(events, targets):
+def n_back_get_scores(events):
     df = pd.DataFrame(events, columns = ['timestamp', 'nothing', 'code', 'test'])
     precision = success_by_targets(n_back_precision(df), 'precision').assign(metric = 'precision')
     recall = success_by_targets(n_back_recall(df), 'recall').assign(metric = 'recall')
-
-    s = pd.concat([precision, recall])
+    response_times = format_response_times(n_back_response(df))
+    s = pd.concat([precision, recall, response_times])
     return s
 
 def read_user_success(user, timing, eeg_data, targets):
     try:
         events = get_user_data(user, timing, eeg_data, targets, events_only = True)
-        df = n_back_get_scores(events, targets).assign(user = user)
+        df = n_back_get_scores(events).assign(user = user)
     except OSError as e:
         print('Could not find user: ', user, 'Error: ', e)
         df = pd.DataFrame([])

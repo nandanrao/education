@@ -75,7 +75,6 @@ def encode_test(df):
         # Stroop test -- drop Practice??? Included now...
         mapping = {"Incongruent": 1, "Neutral":2 }
         series = df['trial_cond(str)'].dropna()
-        print(series.size)
     return series.map(lambda x: mapping[x])
 
 def make_event_df(df, k):
