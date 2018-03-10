@@ -73,6 +73,8 @@ def encode_test(df):
         series = df['is_target(str)']
     except KeyError:
         # Stroop test -- drop Practice??? Included now...
+        df[df.block == 'Main']
+        # ink, color name, hit, miss... for stroop_text or log?
         mapping = {"Incongruent": 1, "Neutral":2 }
         series = df['trial_cond(str)'].dropna()
     return series.map(lambda x: mapping[x])

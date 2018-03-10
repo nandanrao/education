@@ -38,10 +38,10 @@ def n_back_response(df):
     return (precision_df(df)
             .groupby(['test', 'code'])
             .response_time
-            .mean())
+            .median()) # change to median???
 
 def format_response_times(s):
-    naming = lambda x: 'avg_res_time_correct' if x == 1 else 'avg_res_time_wrong'
+    naming = lambda x: 'med_res_time_correct' if x == 1 else 'med_res_time_wrong'
     df = pd.DataFrame(s).reset_index()
     return (df
             .assign(code = df.code.map(naming))
@@ -73,10 +73,26 @@ def n_back_get_scores(events):
     s = pd.concat([precision, recall, response_times])
     return s
 
+def stroop_get_scores(user, timing):
+    d = with_timing(user, timing)['stroop-summary']
+    # metric = ('med_res_time_' +
+    #           d.Task.str.replace(' ', '_').str.lower() +
+    #           '_' +
+    #           d.Congruency.str.lower())
+    response_times = pd.DataFrame({'test': 'stroop',
+                                   'metric': ['accuracy', 'med_res'],
+                                   'score': [
+                                       d.Accuracy.mean(),
+                                       d['Median RT'].median()                                                                    ]})
+    return response_times
+
+
 def read_user_success(user, timing, eeg_data, targets):
     try:
         events = get_user_data(user, timing, eeg_data, targets, events_only = True)
-        df = n_back_get_scores(events).assign(user = user)
+        n_back = n_back_get_scores(events).assign(user = user)
+        stroop = stroop_get_scores(user, timing).assign(user = user)
+        df = pd.concat([n_back, stroop])
     except OSError as e:
         print('Could not find user: ', user, 'Error: ', e)
         df = pd.DataFrame([])
