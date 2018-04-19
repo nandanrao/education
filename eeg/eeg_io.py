@@ -35,12 +35,12 @@ def read_pres_file(subject, ext, header, rm = None, sep = '\t', pres = "../eeg_t
     df = pd.read_csv(f, sep=sep, header=header)
     return df[df[rm] == subject] if rm else df
 
-def read_raw(subject):
-    return { "two-back": read_pres_file(subject, "-2-Back.log", 2, "Subject"),
-      "three-back": read_pres_file(subject, "-3-Back.log", 2, "Subject"),
-      "stroop-log": read_pres_file(subject, "*Stroop Effect.log", 2, "Subject"),
-      "stroop-text": read_pres_file(subject, "*Stroop Effect.txt", 0),
-      "stroop-summary": read_pres_file(subject, "*Stroop Effect-Summary-*.txt", 0)
+def read_raw(subject, pres):
+    return { "two-back": read_pres_file(subject, "-2-Back.log", 2, "Subject", pres=pres),
+      "three-back": read_pres_file(subject, "-3-Back.log", 2, "Subject", pres=pres),
+      "stroop-log": read_pres_file(subject, "*Stroop Effect.log", 2, "Subject", pres=pres),
+      "stroop-text": read_pres_file(subject, "*Stroop Effect.txt", 0, pres=pres),
+      "stroop-summary": read_pres_file(subject, "*Stroop Effect-Summary-*.txt", 0, pres=pres)
     }
 
 def adjust_timing(df, base_time, eeg_start):
@@ -49,11 +49,11 @@ def adjust_timing(df, base_time, eeg_start):
     sample_num = adjusted_time / 20
     return df.assign(Time_Total = adjusted_time, sample_num = sample_num)
 
-def with_timing(subject, timing):
+def with_timing(subject, timing, pres):
     to_adjust = [("two-back", "2-Back Start"),
                  ("three-back", "3-Back Start"),
                  ("stroop-log", "Stroop1 Practice")]
-    logs = read_raw(subject)
+    logs = read_raw(subject, pres)
     time = timing[timing["File Prefix"] == subject]
     for test,col in to_adjust:
         df = logs[test]
@@ -97,8 +97,8 @@ def set_montage(u_dat):
     u_dat.set_montage(montage)
     return u_dat
 
-def get_user_data(user, timing,  eeg_data_folder, tmin = -.2, tmax = .7, l_freq = 1., h_freq = 50., targets = ["two-back", "three-back"], events_only = False):
-    u = with_timing(user, timing)
+def get_user_data(user, timing,  eeg_data_folder, pres, tmin = -.2, tmax = .7, l_freq = 1., h_freq = 50., targets = ["two-back", "three-back"], events_only = False):
+    u = with_timing(user, timing, pres)
     events = make_all_events(u, targets)
     if events_only:
         return events

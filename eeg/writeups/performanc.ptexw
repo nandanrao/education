@@ -1,0 +1,63 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{mathtools,amsfonts,amssymb,amsmath, bm,commath,multicol}
+\usepackage{algorithmicx, tkz-graph, algorithm, fancyhdr, pgfplots}
+\usepackage{fancyvrb, amsthm, csquotes, booktabs}
+\usepackage[noend]{algpseudocode}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\section{Intro}
+
+Hey
+
+<<>>=
+%load_ext autoreload
+%autoreload 2
+from eeg.performance import *
+from eeg.eeg_io import *
+from scipy import stats
+import statsmodels
+import statsmodels.api as sm
+stats.chisqprob = lambda chisq, df: stats.chi2.sf(chisq, df)
+
+timing = pd.read_csv("eeg_tests/timing.csv")
+eeg_data = "../data/EEG"
+
+perf_df = read_all_user_success(timing, eeg_data, 'eeg_tests/logs', targets = ['two-back', 'three-back'])
+
+d = design_perf_df(perf_df)
+d = d[(d['three-back_clicks'] < 50) & (d['two-back_clicks'] < 50)]
+X = d.dropna().drop('treated', 1)
+y = d.dropna().treated
+
+
+fit = lambda X,y: sm.OLS(X, sm.add_constant(y).astype(float)).fit()
+fits = [fit(X[col], y) for col in X.columns]
+
+fit(d['two-back_precision'], d[['two-back_clicks', 'treated']]).summary()
+fit(d['three-back_precision'], d[['three-back_clicks', 'treated']]).summary()
+
+@
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Sat, Apr 14, 2018 - 05:18:56 PM
+\begin{table}[!htbp] \centering
+  \caption{}
+  \label{}
+\begin{tabular}{@{\extracolsep{5pt}}lccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\
+\hline \\[-1.8ex]
+df & 1 & 1.000 &  & 1 & 1 \\
+pillai & 1 & 0.180 &  & 0.180 & 0.180 \\
+statistic & 1 & 4.600 &  & 4.600 & 4.600 \\
+num.df & 1 & 2.000 &  & 2 & 2 \\
+den.df & 1 & 42.000 &  & 42 & 42 \\ 
+p.value & 1 & 0.016 &  & 0.016 & 0.016 \\
+\hline \\[-1.8ex]
+\end{tabular}
+\end{table}
+\end{document}
