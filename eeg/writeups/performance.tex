@@ -7,25 +7,29 @@
 
 \begin{document}
 
-It should first be cautioned that all regressions were performed with 47 observations, 28 treated and 19 untreated. This is a small sample size, and while some of the findings are statistically significant, this is contingent on perfect randomization and, in general, further study would be recommended before drawing strong conclusions. 
+It should first be cautioned that all regressions were performed with 47 observations, 28 treated and 19 untreated. This is a small sample size, and the statistical significance of the findings is contingent on perfect randomization, a condition which cannot be claimed to hold in this instance. In general, further study would be recommended before drawing strong conclusions.
 
-In our results, the treatment is found to have had a significant negative impact on the performance of the students in the 3-back and 2-back tests. We divide the performance of each test into two numbers, ``precision'' and ``recall'', which capture the students type I and type II error respectively. We see two major effects of the treatment: the first being a general drop in performance, the second being an increase in ``trigger happiness''. These findings are robust to corrections are robust to corrections for multiple testing and dropping of outlying students.
+In our results, the treatment is found to have had a negative impact on the performance of the students in the 3-back and 2-back tests. We divide the performance of each test into two numbers, ``precision'' and ``recall'', which capture the students type I and type II error respectively. We see two major effects of the treatment: the first being a general drop in performance, the second being an increase in ``trigger happiness''. No significant differences were found in their performance on the Stroop test, neither in accuracy nor in response times.
 
-Precision considers all the moments the student responded and measures the percentage of those moments that were indeed valid responses. In other words, it is a ratio of the true positive (TP) to all the reported positive (true positives plus false positives):
+Precision looks at all the moments the student responded and measures the percentage of those moments that were indeed valid responses. In other words, it is a ratio of the true positive (TP) to all the reported positive (true positives plus false positives):
 
 $$
 Precision = \frac{TP}{TP + FP}
 $$
 
-We see a significant drop in precision from the treatment. It is noteworthy that, when looked at in isolation (restricted regressions in \ref{tbl:prec-recall} with only the treatment), this is not accompanied by an associated drop in recall. Recall considers all the moments that required a response from the students (the true positives plus the false negatives) and measures how many of those the student actually responded to: 
+We see a significant drop in precision from the treatment. It is noteworthy that, when looked at in isolation (restricted regressions in Table \ref{tbl:prec-recall} with only the treatment), this is not accompanied by an associated drop in recall. Recall considers all the moments that required a response from the students (the true positives plus the false negatives) and measures how many of those the student actually responded to:
 
 $$
 Recall = \frac{TP}{TP + FN}
 $$
 
-A drop in precision with an accompanying increase in recall would imply the students have the same ability, but are simply choosing to value errors differently. A drop in precision with an accompanying drop in recall would imply that they are valuing errors similarly, but have a lesser ability. A drop in precision without an accompanying drop in recall, as we see in the data, could imply both. To see this, we take a look at the overall number of ``clicks'' the students make(\ref{tbl:clicks}). While not statistically significant once we drop a couple of major outlying students who influence the regression dramatically, we can see that there is a tendency for treated students to click more.
+A drop in precision accompanied by an increase in recall would imply the students have the same ability, but are simply choosing to value errors differently. A drop in precision with an accompanying drop in recall would imply that they are valuing errors similarly, but have a lesser ability. A drop in precision without an accompanying drop in recall, as we see in the data, could imply both. To see this, we take a look at the overall number of ``clicks'' the students make (Table \ref{tbl:clicks}), and use that as a proxy for how much they fear making a mistake.
 
-Controlling for the number of clicks and again look at the recall and performance and 2- and 3-back tests (\ref{tbl:prec-recall}) shows that, after controlling for the overall number of clicks, a proxy for ``trigger happiness'', the treated students perform significantly worse both in precision and recall: an overall drop in performance of more than 10 percentage points in both scores. 
+Our treatment group had 2 outlying students who clicked much more than anyone else. With those students dropped, the difference in number of clicks between the two groups is not statistically significant, but we can still see that there appears to be a tendency for treated students to click more.
+
+Controlling for the number of clicks and again look at the recall and performance and 2- and 3-back tests (Table \ref{tbl:prec-recall}) shows that, after controlling for the overall number of clicks, a proxy for ``trigger happiness'', the treated students perform significantly worse both in precision and recall: an overall drop in performance of more than 10 percentage points in both scores.
+
+This drop in performance is not driven by any one or two ``outliers'', however, it should again be cautioned that which such a small sample size, the removal of 4-5 students can completely change the results.
 
 
 \begin{sidewaystable}
@@ -91,6 +95,6 @@ Adjusted $R^2$ & 0.00       & 0.02             & 0.04      & 0.00         & 0.04
 \end{center}
 \end{sidewaystable}
 
-% include clicks table with dropping of outliers?? 
+% include clicks table with dropping of outliers??
 
 \end{document}
